@@ -4,38 +4,32 @@ layout: default
 
 <div>
 
-  {%- if page.title -%}
+  {% if title %}
   <header>
-    <h1>{{ page.title }}</h1>
+    <h1>{{ title }}</h1>
   </header>
-  {%- endif -%}
+  {% endif %}
 
   <section>
-    {{ content }}
+    {{ content | safe }}
   </section>
 
-  {%- if site.posts.size > 0 -%}
-    <p class="h4">{{ page.list_title | default: "Posts" }}</p>
+  {% if collections.posts.length > 0 %}
+    <p class="h4">{{ list_title or "Posts" }}</p>
     <ul class="list-unstyled">
-      {%- for post in site.posts -%}
+      {% for post in collections.posts %}
       <li>
         <span class="text-muted">
-          {%- assign date_format = "%b %-d, %Y" -%}
-          {{ post.date | date: date_format }}
+          <time datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
         </span>
         <p class="h5">
-          <a href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
+          <a href="{{ post.url }}">{{ post.data.title | escape }}</a>
         </p>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
       </li>
-      {%- endfor -%}
+      {% endfor %}
     </ul>
 
-    <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {%- endif -%}
+    <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
+  {% endif %}
 
 </div>
