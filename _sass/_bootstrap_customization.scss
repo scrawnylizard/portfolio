@@ -96,3 +96,69 @@ table,
 .list-group {
   font-size: $font-size-sm;
 }
+
+// Theme selector
+
+.theme-selector {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: $btn-border-radius-sm;
+  padding: 0.2rem 0.5rem;
+  font-size: $font-size-sm;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+  }
+
+  option {
+    background: $gray-800;
+    color: $gray-100;
+  }
+}
+
+// Cyber Daytime theme
+
+html[data-theme="cyber-daytime"] {
+  --bs-primary: #3C91E6;
+  --bs-primary-rgb: 60, 145, 230;
+  --bs-body-bg: #FAFFFD;
+  --bs-body-bg-rgb: 250, 255, 253;
+  --bs-body-color: #{$gray-800};
+  --bs-body-color-rgb: #{red($gray-800)}, #{green($gray-800)}, #{blue($gray-800)};
+  --bs-link-color: #3C91E6;
+  --bs-link-color-rgb: 60, 145, 230;
+  --bs-link-hover-color: #2a7ad4;
+}
+
+// Marathon theme
+
+html[data-theme="marathon"] {
+  --bs-primary: #C43000;
+  --bs-primary-rgb: 196, 48, 0;
+  --bs-body-bg: #0A0A0A;
+  --bs-body-bg-rgb: 10, 10, 10;
+  --bs-body-color: #F5F0E8;
+  --bs-body-color-rgb: 245, 240, 232;
+  --bs-secondary-color: #adb5bd;
+  --bs-border-color: #2a2a2a;
+  --bs-link-color: #AAFF00;
+  --bs-link-color-rgb: 170, 255, 0;
+  --bs-link-hover-color: #88cc00;
+
+  footer.py-5 {
+    background-color: #111111;
+    color: #F5F0E8;
+    border-color: #2a2a2a !important;
+
+    a {
+      color: #AAFF00;
+
+      &:hover { color: #88cc00; }
+    }
+  }
+}
