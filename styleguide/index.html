@@ -57,25 +57,103 @@
 <p>This is the canonical style reference for the personal website. All design decisions should be documented here before being implemented. Claude must read this file before making any styling changes.</p>
 <hr>
 <h2>Colors</h2>
+<h3>Base Palette</h3>
 <table>
 <thead>
 <tr>
 <th>Role</th>
-<th>Value</th>
+<th>Token</th>
+<th>Hex</th>
 <th>Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Primary</td>
+<td>Brand / Action</td>
+<td><code>$primary</code></td>
 <td><code>#4582ec</code></td>
-<td>Main brand/action color</td>
+<td>Bootstrap primary; links, active states</td>
+</tr>
+<tr>
+<td>Near-black</td>
+<td><code>$color-void</code></td>
+<td><code>#0A0A0A</code></td>
+<td>Letterbox bars, deep backgrounds</td>
+</tr>
+<tr>
+<td>Off-white</td>
+<td><code>$color-highlight</code></td>
+<td><code>#F5F0E8</code></td>
+<td>Warm white for text on dark surfaces</td>
 </tr>
 </tbody>
 </table>
-<!-- Add additional colors here as they are defined -->
+<h3>Marathon Palette (Cinematic / Hero Contexts)</h3>
+<p>Drawn from the Marathon reference image: high-saturation fire tones anchored by a neon lime accent and cool violet/magenta counterpoints.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Token</th>
+<th>Hex</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fire core</td>
+<td><code>$color-fire-deep</code></td>
+<td><code>#C43000</code></td>
+<td>Darkest ember; shadows, depth layers</td>
+</tr>
+<tr>
+<td>Fire mid</td>
+<td><code>$color-fire</code></td>
+<td><code>#E85400</code></td>
+<td>Dominant background orange</td>
+</tr>
+<tr>
+<td>Fire bright</td>
+<td><code>$color-fire-bright</code></td>
+<td><code>#FF7A00</code></td>
+<td>Mid-range flame; highlight bands</td>
+</tr>
+<tr>
+<td>Amber</td>
+<td><code>$color-amber</code></td>
+<td><code>#FFB300</code></td>
+<td>Warm top-of-flame; gradient terminus</td>
+</tr>
+<tr>
+<td>Neon lime</td>
+<td><code>$color-lime</code></td>
+<td><code>#AAFF00</code></td>
+<td>High-voltage accent; display type, CTAs on dark</td>
+</tr>
+<tr>
+<td>Violet</td>
+<td><code>$color-violet</code></td>
+<td><code>#4422AA</code></td>
+<td>Cool counterpoint; left/right edge bleeds</td>
+</tr>
+<tr>
+<td>Magenta</td>
+<td><code>$color-magenta</code></td>
+<td><code>#FF1478</code></td>
+<td>Hot-pink pop; used sparingly for tension</td>
+</tr>
+</tbody>
+</table>
+<h4>Usage rules</h4>
+<ul>
+<li>The fire gradient (<code>$color-fire-deep</code> → <code>$color-fire</code> → <code>$color-fire-bright</code> → <code>$color-amber</code>) is for hero/full-bleed backgrounds only — not UI chrome.</li>
+<li><code>$color-lime</code> is the sole light-on-dark accent. One instance per viewport at most; overuse destroys impact.</li>
+<li><code>$color-violet</code> and <code>$color-magenta</code> are edge/bleed accents, never dominant fills.</li>
+<li>All Marathon palette colors must appear against <code>$color-void</code> or a fire-gradient background; never on white.</li>
+</ul>
 <hr>
 <h2>Typography</h2>
+<h3>Typefaces</h3>
 <table>
 <thead>
 <tr>
@@ -92,15 +170,91 @@
 <td>UI / headings</td>
 <td>System sans-serif stack (default Bootstrap)</td>
 </tr>
+<tr>
+<td>Display (Marathon)</td>
+<td>Wide-tracked uppercase sans — <code>letter-spacing: 0.25em</code> minimum</td>
+</tr>
 </tbody>
 </table>
-<!-- Add font sizes, weights, line heights, and heading scale here -->
+<h3>Marathon Display Type</h3>
+<p>Large hero text uses extreme letter-spacing and all-caps to match the cinematic titling style in the reference image.</p>
+<pre><code class="language-scss">.display-marathon {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-weight: 700;
+  color: $color-lime;          // default: neon lime on dark
+  line-height: 1;
+}
+</code></pre>
+<p>HUD / telemetry labels (small metadata beneath hero content) use monospace, low opacity:</p>
+<pre><code class="language-scss">.label-hud {
+  font-family: &quot;Courier New&quot;, Courier, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  color: $color-amber;
+}
+</code></pre>
 <hr>
 <h2>Spacing</h2>
 <!-- Document the spacing scale and usage rules here -->
 <hr>
 <h2>Layout</h2>
-<!-- Document grid behavior, max-widths, breakpoints, and page structure here -->
+<h3>Letterbox</h3>
+<p>Hero sections may use a letterbox treatment — <code>$color-void</code> bars (top and bottom, ~5–8 vh each) cropping the visible content area to a 2.39:1 cinematic ratio. This is achieved with padding or pseudo-elements, not by clipping the background.</p>
+<hr>
+<h2>Background Patterns</h2>
+<h3>Fire Gradient</h3>
+<p>The primary hero background: a multi-stop linear gradient moving from deep ember at the bottom to bright amber at the top, with orange as the dominant mid-zone.</p>
+<pre><code class="language-scss">.bg-fire {
+  background: linear-gradient(
+    180deg,
+    $color-amber      0%,
+    $color-fire-bright 30%,
+    $color-fire        60%,
+    $color-fire-deep   100%
+  );
+}
+</code></pre>
+<h3>Scanline Overlay</h3>
+<p>A repeating horizontal-line texture evokes a CRT or broadcast monitor. Applied as a <code>::after</code> pseudo-element so it doesn't interfere with content stacking.</p>
+<pre><code class="language-scss">.bg-scanlines::after {
+  content: &quot;&quot;;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12) 0px,
+    rgba(0, 0, 0, 0.12) 1px,
+    transparent         1px,
+    transparent         3px
+  );
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+</code></pre>
+<p>Line pitch: 3 px (1 px dark / 2 px transparent). Increase pitch to 4–5 px on mobile for legibility.</p>
+<h3>Color Band Overlay</h3>
+<p>Translucent vertical or horizontal color blocks layered over the fire gradient create the multi-plane glitch depth seen in the reference image. Each band is a <code>position: absolute</code> element with reduced opacity.</p>
+<pre><code class="language-scss">// Example: violet edge bleed (right side)
+.bg-band-violet {
+  background: $color-violet;
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+// Example: magenta mid-band
+.bg-band-magenta {
+  background: $color-magenta;
+  opacity: 0.25;
+  mix-blend-mode: screen;
+}
+</code></pre>
+<p>Use <code>mix-blend-mode: screen</code> on color bands over the fire gradient to preserve luminosity. Keep total layered opacity of any one area below 0.5 to avoid muddying the base.</p>
+<h3>Pixel / Block Glitch</h3>
+<p>High-contrast rectangular blocks (white-on-orange or lime-on-dark) at irregular intervals evoke the pixelated crown shapes in the reference image. These are decorative only and must not obscure readable content. Implement as SVG or CSS <code>box-shadow</code> lists — not images — to keep them resolution-independent.</p>
 <hr>
 <h2>Components</h2>
 <!-- Document per-component decisions here (Navbar, Footer, Buttons, Cards, etc.) -->
