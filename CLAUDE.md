@@ -12,19 +12,21 @@ This applies to: colors, typography, spacing, layout, component styles, animatio
 
 ## Project Overview
 
-- **Framework:** Jekyll (static site generator)
-- **Hosting:** GitHub Pages
-- **Styling:** Sass/SCSS compiled by Jekyll; Bootstrap 5.3.6 (Bootswatch Litera theme)
+- **Framework:** Eleventy (11ty) static site generator
+- **Hosting:** GitHub Pages (deployed via GitHub Actions → `gh-pages` branch)
+- **Styling:** Sass/SCSS compiled by `@11ty/eleventy-sass`; Bootstrap 5.3.6 (Bootswatch Litera theme)
 - **Key style files:**
   - `STYLEGUIDE.md` — canonical design decisions (read this first)
   - `_sass/_variables.scss` — Bootstrap token overrides
   - `_sass/_bootstrap_customization.scss` — component-level custom overrides
   - `assets/main.scss` — Sass entry point (imports order matters)
-- **Templates:** `_layouts/` and `_includes/` (Jekyll partials)
+- **Templates:** `_layouts/` and `_includes/` (Nunjucks partials)
 - **Homepage:** `index.html` (Bootstrap Cover template pattern)
+- **Config:** `.eleventy.js` — 11ty configuration; `_data/site.js` — site-wide variables
 
 ## Development Notes
 
 - The `_sass/bootstrap/` directory is vendored Bootstrap source — do not edit it
 - Compiled output lives in `assets/dist/` — do not edit directly; it is generated
-- Jekyll auto-compiles Sass during `jekyll build` / `jekyll serve`
+- Run `npm run build` to build; `npm start` to serve locally with live reload
+- 11ty compiles `assets/main.scss` → `_site/assets/main.css` via `@11ty/eleventy-sass`
