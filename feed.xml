@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>gregorymdunaway.com</title>
+  <link href="https://gregorymdunaway.com/feed.xml" rel="self"/>
+  <link href="https://gregorymdunaway.com/"/>
+  
+  <id>https://gregorymdunaway.com/</id>
+  <author>
+    <name>Gregory M Dunaway</name>
+  </author>
+  
+</feed>
