@@ -2,6 +2,7 @@
 <html lang="en">
 
   <head>
+  <script>(function(){try{var t=localStorage.getItem('portfolio-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,6 +21,7 @@
   <link rel="alternate" type="application/rss+xml" title="gregorymdunaway.com" href="https://gregorymdunaway.com/feed.xml">
 
   <script src="/assets/javascript/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/theme-selector.js" defer></script>
 </head>
 
 
@@ -37,6 +39,13 @@
         
         <li class="nav-item">
           <a class="nav-link" href="https://github.com/scrawnylizard/portfolio">Fork me on Github</a>
+        </li>
+        <li class="nav-item ms-lg-2 d-flex align-items-center">
+          <select id="theme-picker" class="theme-selector" aria-label="Select theme">
+            <option value="">Default</option>
+            <option value="cyber-daytime">Cyber Daytime</option>
+            <option value="marathon">Marathon</option>
+          </select>
         </li>
       </ul>
     </div>
@@ -150,6 +159,64 @@
 <li><code>$color-lime</code> is the sole light-on-dark accent. One instance per viewport at most; overuse destroys impact.</li>
 <li><code>$color-violet</code> and <code>$color-magenta</code> are edge/bleed accents, never dominant fills.</li>
 <li>All Marathon palette colors must appear against <code>$color-void</code> or a fire-gradient background; never on white.</li>
+</ul>
+<h3>Cyber Daytime Palette (Light / High-Energy Contexts)</h3>
+<p>High-saturation, high-brightness tones evoking digital screens in harsh daylight: electric blue sky, neon yellow sun, sharp green, warm coral, and near-pure white.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>Token</th>
+<th>Hex</th>
+<th>RGB</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sky / Primary</td>
+<td><code>$cd-ocean</code></td>
+<td><code>#3C91E6</code></td>
+<td>60, 145, 230</td>
+<td>Bright cerulean; primary action color in this theme</td>
+</tr>
+<tr>
+<td>Solar accent</td>
+<td><code>$cd-yellow</code></td>
+<td><code>#FFFF3F</code></td>
+<td>255, 255, 63</td>
+<td>Electric yellow; display type and highlights on dark/mid surfaces only</td>
+</tr>
+<tr>
+<td>Charge / Success</td>
+<td><code>$cd-green</code></td>
+<td><code>#A2D729</code></td>
+<td>162, 215, 41</td>
+<td>Yellow-green; active states, success indicators</td>
+</tr>
+<tr>
+<td>Surface</td>
+<td><code>$cd-porcelain</code></td>
+<td><code>#FAFFFD</code></td>
+<td>250, 255, 253</td>
+<td>Near-white with a cool mint undertone; page background, card surfaces</td>
+</tr>
+<tr>
+<td>Warmth / CTA</td>
+<td><code>$cd-coral</code></td>
+<td><code>#FA824C</code></td>
+<td>250, 130, 76</td>
+<td>Coral-orange; primary call-to-action buttons, hover states, human warmth</td>
+</tr>
+</tbody>
+</table>
+<h4>Usage rules</h4>
+<ul>
+<li><code>$cd-porcelain</code> is the default page background in the Cyber Daytime theme — not pure white.</li>
+<li><code>$cd-yellow</code> has insufficient contrast on <code>$cd-porcelain</code> for body text; use it only as a fill/background, large display type on <code>$cd-ocean</code>, or decorative elements.</li>
+<li><code>$cd-ocean</code> and <code>$cd-coral</code> are the two action colors. Use one per UI region — don't mix them on a single button row.</li>
+<li><code>$cd-green</code> is reserved for positive/active state feedback; avoid using it purely decoratively so it retains semantic meaning.</li>
+<li>This palette is for light-mode surfaces. Do not combine it with the Marathon palette's fire tones in the same section.</li>
 </ul>
 <hr>
 <h2>Typography</h2>
