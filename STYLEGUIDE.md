@@ -41,6 +41,26 @@ Drawn from the Marathon reference image: high-saturation fire tones anchored by 
 - `$color-violet` and `$color-magenta` are edge/bleed accents, never dominant fills.
 - All Marathon palette colors must appear against `$color-void` or a fire-gradient background; never on white.
 
+### Cyber Daytime Palette (Light / High-Energy Contexts)
+
+High-saturation, high-brightness tones evoking digital screens in harsh daylight: electric blue sky, neon yellow sun, sharp green, warm coral, and near-pure white.
+
+| Role | Token | Hex | RGB | Notes |
+|------|-------|-----|-----|-------|
+| Sky / Primary | `$cd-ocean` | `#3C91E6` | 60, 145, 230 | Bright cerulean; primary action color in this theme |
+| Solar accent | `$cd-yellow` | `#FFFF3F` | 255, 255, 63 | Electric yellow; display type and highlights on dark/mid surfaces only |
+| Charge / Success | `$cd-green` | `#A2D729` | 162, 215, 41 | Yellow-green; active states, success indicators |
+| Surface | `$cd-porcelain` | `#FAFFFD` | 250, 255, 253 | Near-white with a cool mint undertone; page background, card surfaces |
+| Warmth / CTA | `$cd-coral` | `#FA824C` | 250, 130, 76 | Coral-orange; primary call-to-action buttons, hover states, human warmth |
+
+#### Usage rules
+
+- `$cd-porcelain` is the default page background in the Cyber Daytime theme — not pure white.
+- `$cd-yellow` has insufficient contrast on `$cd-porcelain` for body text; use it only as a fill/background, large display type on `$cd-ocean`, or decorative elements.
+- `$cd-ocean` and `$cd-coral` are the two action colors. Use one per UI region — don't mix them on a single button row.
+- `$cd-green` is reserved for positive/active state feedback; avoid using it purely decoratively so it retains semantic meaning.
+- This palette is for light-mode surfaces. Do not combine it with the Marathon palette's fire tones in the same section.
+
 ---
 
 ## Typography
