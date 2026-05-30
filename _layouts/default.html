@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang or site.lang or 'en' }}">
 
-  {%- include head.html -%}
+  {% include "head.html" %}
 
   <body>
 
-    {%- include header.html -%}
+    {% include "header.html" %}
 
     <div class="py-5">
       <div class="container page-content">
-          {{ content }}
+          {{ content | safe }}
       </div>
     </div>
 
-    {%- include footer.html -%}
+    {% include "footer.html" %}
 
   </body>
 
