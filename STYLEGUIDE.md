@@ -1,3 +1,9 @@
+---
+layout: page
+title: Style Guide
+permalink: /styleguide/
+---
+
 # Style Guide
 
 This is the canonical style reference for the personal website. All design decisions should be documented here before being implemented. Claude must read this file before making any styling changes.

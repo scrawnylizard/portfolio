@@ -10,7 +10,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.ignores.add("_sass");
   eleventyConfig.ignores.add("CLAUDE.md");
   eleventyConfig.ignores.add("README.md");
-  eleventyConfig.ignores.add("STYLEGUIDE.md");
 
   // Sass compilation: process .scss entry files (not partials)
   eleventyConfig.addTemplateFormats("scss");
