@@ -1,20 +1,19 @@
 ---
 layout: default
 ---
-<article>
-
-  <header>
-    <h1>{{ title | escape }}</h1>
-    <p class="text-muted">
-      <time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time>
-      {% if author %}
-        • {{ author }}
-      {% endif %}
-    </p>
-  </header>
-
-  <section>
-    {{ content | safe }}
-  </section>
-
-</article>
+<div class="py-xl px-md">
+  <div class="line-length-xl mx-auto">
+    <article class="formatted">
+      <header class="mb-lg">
+        <h1>{{ title | escape }}</h1>
+        <p class="mt-xs text-muted">
+          <time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time>
+          {% if author %} &middot; {{ author }}{% endif %}
+        </p>
+      </header>
+      <section>
+        {{ content | safe }}
+      </section>
+    </article>
+  </div>
+</div>

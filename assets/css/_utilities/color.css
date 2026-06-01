@@ -1,0 +1,10 @@
+/* ----------------------------------------------------------------------------
+color
+---------------------------------------------------------------------------- */
+.set-text { color: var(--color-text); }
+.set-bg   { background-color: var(--color-bg); }
+.set-bg-dark { background-color: var(--color-bg-dark); }
+.set-accent  { color: var(--color-accent); }
+.set-link    { color: var(--color-link); }
+
+.text-muted { opacity: 0.65; }

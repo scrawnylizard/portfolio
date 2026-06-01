@@ -1,0 +1,22 @@
+/* ----------------------------------------------------------------------------
+forms
+---------------------------------------------------------------------------- */
+input, textarea, select, button {
+  font: inherit;
+}
+
+input, textarea, select {
+  border: var(--border-width-sm) solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-bg);
+  color: var(--color-text);
+  inline-size: 100%;
+}
+
+label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-lg);
+  display: block;
+  margin-block-end: var(--space-xxs);
+}

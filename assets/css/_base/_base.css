@@ -1,0 +1,10 @@
+/* ----------------------------------------------------------------------------
+base: import all base partials
+---------------------------------------------------------------------------- */
+@import "@root.css";
+@import "blocks.css";
+@import "fonts.css";
+@import "forms.css";
+@import "overlays.css";
+@import "themes.css";
+@import "typography.css";

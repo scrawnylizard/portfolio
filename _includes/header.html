@@ -1,28 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" rel="author" href="/">{{ site.title | escape }}</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-md-auto">
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" rel="author" href="/">{{ site.title | escape }}</a>
+    <nav aria-label="Site navigation">
+      <ul class="site-nav">
         {% for item in site.header_pages %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ item.url }}">{{ item.title | escape }}</a>
+        <li>
+          <a class="site-nav__link" href="{{ item.url }}">{{ item.title | escape }}</a>
         </li>
         {% endfor %}
-        <li class="nav-item">
-          <a class="nav-link" href="{{ site.github_repository_url }}">Fork me on Github</a>
+        <li>
+          <a class="site-nav__link" href="{{ site.github_repository_url }}">GitHub</a>
         </li>
-        <li class="nav-item ms-lg-2 d-flex align-items-center">
-          <select id="theme-picker" class="theme-selector" aria-label="Select theme">
+        <li>
+          <select id="theme-picker" class="theme-picker" aria-label="Select theme">
             <option value="">Default</option>
             <option value="cyber-daytime">Cyber Daytime</option>
             <option value="marathon">Marathon</option>
           </select>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
-</nav>
+</header>

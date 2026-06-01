@@ -2,34 +2,31 @@
 layout: default
 ---
 
-<div>
-
-  {% if title %}
-  <header>
+{% if title %}
+<div class="py-lg px-md border-bottom">
+  <div class="line-length-xl mx-auto">
     <h1>{{ title }}</h1>
-  </header>
-  {% endif %}
+  </div>
+</div>
+{% endif %}
 
-  <section>
-    {{ content | safe }}
-  </section>
+{{ content | safe }}
 
-  {% if collections.posts.length > 0 %}
-    <p class="h4">{{ list_title or "Posts" }}</p>
-    <ul class="list-unstyled">
+{% if collections.posts.length > 0 %}
+<div class="py-xl px-md border-top">
+  <div class="line-length-xl mx-auto">
+    <p class="font-size-lg font-weight-xl mb-md">{{ list_title or "Posts" }}</p>
+    <ul class="unlisted">
       {% for post in collections.posts %}
-      <li>
-        <span class="text-muted">
-          <time datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
-        </span>
-        <p class="h5">
-          <a href="{{ post.url }}">{{ post.data.title | escape }}</a>
+      <li class="mb-sm border-bottom pb-sm">
+        <time class="font-size-sm text-muted" datetime="{{ post.date | isoDate }}">{{ post.date | postDate }}</time>
+        <p class="mt-xs">
+          <a href="{{ post.url }}" class="font-weight-xl undecorated">{{ post.data.title | escape }}</a>
         </p>
       </li>
       {% endfor %}
     </ul>
-
-    <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-  {% endif %}
-
+    <p class="mt-lg font-size-sm"><a href="/feed.xml">Subscribe via RSS</a></p>
+  </div>
 </div>
+{% endif %}

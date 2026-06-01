@@ -1,0 +1,16 @@
+/* ----------------------------------------------------------------------------
+display
+---------------------------------------------------------------------------- */
+.hidden        { display: none; }
+.inline        { display: inline; }
+.inline-block  { display: inline-block; }
+
+@media (--sm) {
+  .hidden\@sm  { display: none; }
+  .block\@sm   { display: block; }
+}
+
+@media (--md) {
+  .hidden\@md  { display: none; }
+  .block\@md   { display: block; }
+}
