@@ -1,0 +1,95 @@
+/* ----------------------------------------------------------------------------
+nav: site navigation
+---------------------------------------------------------------------------- */
+.site-header {
+  border-block-end: var(--border-width-sm) solid var(--color-border);
+  background: var(--color-bg);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding-block: var(--space-sm);
+  padding-inline: var(--space-md);
+  max-inline-size: 80rem;
+  margin-inline: auto;
+}
+
+.site-header__brand {
+  font-weight: var(--font-weight-xl);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  text-decoration: none;
+  letter-spacing: var(--letter-spacing-sm);
+}
+
+@media (--hover) {
+  .site-header__brand:hover {
+    color: var(--color-accent);
+  }
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  list-style: none;
+}
+
+.site-nav__link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.75;
+}
+
+@media (--hover) {
+  .site-nav__link:hover {
+    opacity: 1;
+    color: var(--color-accent);
+  }
+}
+
+/* theme picker */
+.theme-picker {
+  appearance: none;
+  background: oklch(from var(--color-bg) calc(l * 0.96) c h);
+  border: var(--border-width-sm) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  color: var(--color-text);
+  cursor: pointer;
+  font: inherit;
+  font-size: var(--font-size-xs);
+  padding: 0.2em 0.6em;
+}
+
+/* site footer */
+.site-footer {
+  border-block-start: var(--border-width-sm) solid var(--color-border);
+  padding-block: var(--space-lg);
+  padding-inline: var(--space-md);
+}
+
+.site-footer__inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-md);
+  max-inline-size: 80rem;
+  margin-inline: auto;
+  flex-wrap: wrap;
+}
+
+.site-footer__name {
+  font-weight: var(--font-weight-lg);
+  font-size: var(--font-size-sm);
+  margin-block-end: var(--space-xxs);
+}
+
+.site-footer__desc {
+  font-size: var(--font-size-sm);
+  opacity: 0.65;
+  max-inline-size: var(--line-length-sm);
+}

@@ -1,0 +1,74 @@
+/* ----------------------------------------------------------------------------
+themes: color-scheme and palette variant classes
+---------------------------------------------------------------------------- */
+
+/* explicit color-scheme overrides */
+.dark  { color-scheme: dark; }
+.light { color-scheme: light; }
+
+.inverted {
+  color-scheme: dark;
+}
+
+@media (--dark) {
+  .inverted { color-scheme: light; }
+}
+
+/* high / low contrast variants */
+.high-contrast {
+  --neutral:  oklch(80% 0.01 256deg);
+  --primary:  oklch(30% 0.25 256deg);
+  --secondary: oklch(55% 0.15 200deg);
+
+  --color-text:    light-dark(oklch(from var(--neutral) var(--900)), oklch(from var(--neutral) var(--50)));
+  --color-bg:      light-dark(white, oklch(from var(--primary) var(--900)));
+  --color-bg-dark: light-dark(oklch(from var(--neutral) var(--100)), oklch(from var(--primary) var(--900)));
+  --color-accent:  light-dark(oklch(from var(--primary) var(--600)), oklch(from var(--primary) var(--200)));
+  --color-link:    light-dark(oklch(from var(--secondary) var(--600)), oklch(from var(--secondary) var(--100)));
+  --color-border:  light-dark(oklch(from var(--neutral) var(--300)), oklch(from var(--primary) var(--500)));
+}
+
+.low-contrast {
+  --neutral:  oklch(80% 0.01 256deg);
+  --primary:  oklch(58% 0.06 256deg);
+  --secondary: oklch(65% 0.06 200deg);
+
+  --color-text:    light-dark(oklch(from var(--neutral) var(--600)), oklch(from var(--neutral) var(--200)));
+  --color-bg:      light-dark(white, oklch(from var(--primary) var(--800)));
+  --color-accent:  light-dark(oklch(from var(--primary) var(--400)), oklch(from var(--primary) var(--400)));
+  --color-link:    light-dark(oklch(from var(--secondary) var(--400)), oklch(from var(--secondary) var(--300)));
+  --color-border:  light-dark(oklch(from var(--neutral) var(--200)), oklch(from var(--primary) var(--600)));
+}
+
+/* marathon theme — cinematic fire palette */
+.marathon {
+  --color-text:    var(--color-highlight, #f5f0e8);
+  --color-bg:      var(--color-fire, #e85400);
+  --color-bg-dark: var(--color-fire-deep, #c43000);
+  --color-accent:  var(--color-lime, #aaff00);
+  --color-link:    var(--color-lime, #aaff00);
+  --color-border:  rgba(255, 255, 255, 0.2);
+  color-scheme: dark;
+}
+
+/* cyber daytime theme */
+.cyber-daytime {
+  --color-text:    #1a1a2e;
+  --color-bg:      #fafffd;
+  --color-bg-dark: #e8f4f8;
+  --color-accent:  #3c91e6;
+  --color-link:    #3c91e6;
+  --color-border:  rgba(60, 145, 230, 0.2);
+  color-scheme: light;
+}
+
+/* fire gradient background */
+.bg-fire {
+  background: linear-gradient(
+    180deg,
+    #ffb300 0%,
+    #ff7a00 30%,
+    #e85400 60%,
+    #c43000 100%
+  );
+}

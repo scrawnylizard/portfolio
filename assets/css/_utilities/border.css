@@ -1,0 +1,14 @@
+/* ----------------------------------------------------------------------------
+border
+---------------------------------------------------------------------------- */
+.border        { border: var(--border-width-sm) solid var(--color-border); }
+.border-top    { border-block-start: var(--border-width-sm) solid var(--color-border); }
+.border-bottom { border-block-end:   var(--border-width-sm) solid var(--color-border); }
+.border-none   { border: none; }
+
+.rounded-0  { border-radius: var(--border-radius-0); }
+.rounded-sm { border-radius: var(--border-radius-sm); }
+.rounded-md { border-radius: var(--border-radius-md); }
+.rounded-lg { border-radius: var(--border-radius-lg); }
+.rounded-xl { border-radius: var(--border-radius-xl); }
+.rounded-full { border-radius: 9999px; }

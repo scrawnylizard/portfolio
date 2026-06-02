@@ -1,0 +1,109 @@
+/* ----------------------------------------------------------------------------
+blocks: global element resets and foundational rules
+---------------------------------------------------------------------------- */
+
+/* reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* selection */
+::selection {
+  background: oklch(from var(--primary) var(--300));
+  color: oklch(from var(--primary) var(--900));
+}
+
+/* focus */
+:focus-visible {
+  outline: var(--border-width-md) solid var(--color-accent);
+  outline-offset: 0.15em;
+  border-radius: var(--border-radius-sm);
+}
+
+/* view transitions */
+@media (--motion) {
+  @view-transition {
+    navigation: auto;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 0.1s;
+  }
+}
+
+/* root */
+html {
+  min-block-size: 100dvh;
+  overflow-x: clip;
+}
+
+@media (--motion) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* body */
+body {
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100dvh;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight);
+  line-height: var(--line-height-lg);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+main {
+  flex: 1;
+}
+
+/* container queries */
+main, header, footer {
+  container-type: inline-size;
+}
+
+/* media */
+img, video, iframe, svg {
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+/* details chevron */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+details > summary::marker,
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary::before {
+  content: "";
+  display: inline-block;
+  inline-size: 0.75em;
+  block-size: 0.75em;
+  clip-path: var(--shape-chevron);
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+@media (--motion) {
+  details > summary::before {
+    transition: transform 0.2s ease;
+  }
+}
+
+details[open] > summary::before {
+  transform: rotate(90deg);
+}

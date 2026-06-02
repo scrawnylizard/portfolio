@@ -1,0 +1,47 @@
+/* ----------------------------------------------------------------------------
+button
+---------------------------------------------------------------------------- */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--border-radius-xl);
+  border: var(--border-width-sm) solid transparent;
+  background: var(--color-accent);
+  color: light-dark(white, oklch(from var(--primary) var(--900)));
+  font-weight: var(--font-weight-lg);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  cursor: pointer;
+  line-height: var(--line-height-sm);
+  white-space: nowrap;
+}
+
+@media (--motion) {
+  .button {
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+}
+
+@media (--hover) {
+  .button:hover {
+    opacity: 0.85;
+  }
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button--outline {
+  background: transparent;
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+.button--ghost {
+  background: oklch(from var(--color-accent) l c h / 12%);
+  color: var(--color-accent);
+  border-color: transparent;
+}

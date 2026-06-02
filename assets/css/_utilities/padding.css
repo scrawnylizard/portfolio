@@ -1,0 +1,39 @@
+/* ----------------------------------------------------------------------------
+padding
+---------------------------------------------------------------------------- */
+.p-0   { padding: 0; }
+.p-xs  { padding: var(--space-xs); }
+.p-sm  { padding: var(--space-sm); }
+.p-md  { padding: var(--space-md); }
+.p-lg  { padding: var(--space-lg); }
+.p-xl  { padding: var(--space-xl); }
+
+.py-0   { padding-block: 0; }
+.py-xs  { padding-block: var(--space-xs); }
+.py-sm  { padding-block: var(--space-sm); }
+.py-md  { padding-block: var(--space-md); }
+.py-lg  { padding-block: var(--space-lg); }
+.py-xl  { padding-block: var(--space-xl); }
+.py-xxl { padding-block: var(--space-xxl); }
+
+.px-0   { padding-inline: 0; }
+.px-xs  { padding-inline: var(--space-xs); }
+.px-sm  { padding-inline: var(--space-sm); }
+.px-md  { padding-inline: var(--space-md); }
+.px-lg  { padding-inline: var(--space-lg); }
+
+.pt-xs  { padding-block-start: var(--space-xs); }
+.pt-sm  { padding-block-start: var(--space-sm); }
+.pt-md  { padding-block-start: var(--space-md); }
+.pt-lg  { padding-block-start: var(--space-lg); }
+
+.pb-xs  { padding-block-end: var(--space-xs); }
+.pb-sm  { padding-block-end: var(--space-sm); }
+.pb-md  { padding-block-end: var(--space-md); }
+.pb-lg  { padding-block-end: var(--space-lg); }
+
+@media (--md) {
+  .py-xl\@md  { padding-block: var(--space-xl); }
+  .py-xxl\@md { padding-block: var(--space-xxl); }
+  .px-lg\@md  { padding-inline: var(--space-lg); }
+}
