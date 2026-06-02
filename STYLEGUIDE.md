@@ -16,9 +16,18 @@ This is the canonical style reference for the personal website. All design decis
 
 | Role | Token | Hex | Notes |
 |------|-------|-----|-------|
-| Brand / Action | `$primary` | `#4582ec` | Bootstrap primary; links, active states |
-| Near-black | `$color-void` | `#0A0A0A` | Letterbox bars, deep backgrounds |
-| Off-white | `$color-highlight` | `#F5F0E8` | Warm white for text on dark surfaces |
+| Brand / Action | `$primary` | `#4582ec` | Links, active states, accent color |
+| Near-black | `$color-void` | `#0A0A0A` | Default light-mode text; letterbox bars, deep backgrounds |
+| Off-white | `$color-highlight` | `#F5F0E8` | Default light-mode page background; text on dark surfaces |
+
+#### Light / dark mode
+
+The default theme supports both light and dark modes automatically, adapting to the visitor's system preference:
+
+- **Light mode** — background: `#F5F0E8` (color-highlight); text: `#0A0A0A` (color-void)
+- **Dark mode** — background: a deep tone derived from the primary blue; text: a desaturated near-white
+
+Neither Marathon nor Cyber Daytime activates dark mode independently — they override the color palette entirely (see themes below).
 
 ### Marathon Palette (Cinematic / Hero Contexts)
 
@@ -36,10 +45,10 @@ Drawn from the Marathon reference image: high-saturation fire tones anchored by 
 
 #### Usage rules
 
-- The fire gradient (`$color-fire-deep` → `$color-fire` → `$color-fire-bright` → `$color-amber`) is for hero/full-bleed backgrounds only — not UI chrome.
-- `$color-lime` is the sole light-on-dark accent. One instance per viewport at most; overuse destroys impact.
-- `$color-violet` and `$color-magenta` are edge/bleed accents, never dominant fills.
-- All Marathon palette colors must appear against `$color-void` or a fire-gradient background; never on white.
+- The fire gradient (`#C43000` → `#E85400` → `#FF7A00` → `#FFB300`) is for hero/full-bleed backgrounds only — not UI chrome.
+- `#AAFF00` (lime) is the sole light-on-dark accent. One instance per viewport at most; overuse destroys impact.
+- `#4422AA` (violet) and `#FF1478` (magenta) are edge/bleed accents, never dominant fills.
+- All Marathon palette colors must appear against `#0A0A0A` or a fire-gradient background; never on white.
 
 ### Cyber Daytime Palette (Light / High-Energy Contexts)
 
@@ -55,10 +64,10 @@ High-saturation, high-brightness tones evoking digital screens in harsh daylight
 
 #### Usage rules
 
-- `$cd-porcelain` is the default page background in the Cyber Daytime theme — not pure white.
-- `$cd-yellow` has insufficient contrast on `$cd-porcelain` for body text; use it only as a fill/background, large display type on `$cd-ocean`, or decorative elements.
-- `$cd-ocean` and `$cd-coral` are the two action colors. Use one per UI region — don't mix them on a single button row.
-- `$cd-green` is reserved for positive/active state feedback; avoid using it purely decoratively so it retains semantic meaning.
+- `#FAFFFD` (porcelain) is the default page background in the Cyber Daytime theme — not pure white.
+- `#FFFF3F` (yellow) has insufficient contrast on porcelain for body text; use it only as a fill/background, large display type on `#3C91E6`, or decorative elements.
+- `#3C91E6` (ocean) and `#FA824C` (coral) are the two action colors. Use one per UI region — don't mix them on a single button row.
+- `#A2D729` (green) is reserved for positive/active state feedback; avoid using it purely decoratively so it retains semantic meaning.
 - This palette is for light-mode surfaces. Do not combine it with the Marathon palette's fire tones in the same section.
 
 ---
@@ -70,35 +79,17 @@ High-saturation, high-brightness tones evoking digital screens in harsh daylight
 | Role | Value |
 |------|-------|
 | Body (prose) | Georgia, Cambria, "Times New Roman", serif |
-| UI / headings | System sans-serif stack (default Bootstrap) |
+| UI / headings | System sans-serif stack |
 | Display (Marathon) | Wide-tracked uppercase sans — `letter-spacing: 0.25em` minimum |
 
 ### Marathon Display Type
 
 Large hero text uses extreme letter-spacing and all-caps to match the cinematic titling style in the reference image.
 
-```scss
-.display-marathon {
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-weight: 700;
-  color: $color-lime;          // default: neon lime on dark
-  line-height: 1;
-}
-```
+Display marathon text: `uppercase`, `letter-spacing: 0.25em`, `font-weight: 700`, `color: #AAFF00` (lime), `line-height: 1`.
 
 HUD / telemetry labels (small metadata beneath hero content) use monospace, low opacity:
-
-```scss
-.label-hud {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.55;
-  color: $color-amber;
-}
-```
+`font-family: monospace`, `font-size: 0.65rem`, `letter-spacing: 0.08em`, `text-transform: uppercase`, `opacity: 0.55`, `color: #FFB300` (amber).
 
 ---
 
@@ -112,7 +103,7 @@ HUD / telemetry labels (small metadata beneath hero content) use monospace, low 
 
 ### Letterbox
 
-Hero sections may use a letterbox treatment — `$color-void` bars (top and bottom, ~5–8 vh each) cropping the visible content area to a 2.39:1 cinematic ratio. This is achieved with padding or pseudo-elements, not by clipping the background.
+Hero sections may use a letterbox treatment — `#0A0A0A` bars (top and bottom, ~5–8 vh each) cropping the visible content area to a 2.39:1 cinematic ratio. This is achieved with padding or pseudo-elements, not by clipping the background.
 
 ---
 
@@ -122,14 +113,14 @@ Hero sections may use a letterbox treatment — `$color-void` bars (top and bott
 
 The primary hero background: a multi-stop linear gradient moving from deep ember at the bottom to bright amber at the top, with orange as the dominant mid-zone.
 
-```scss
+```css
 .bg-fire {
   background: linear-gradient(
     180deg,
-    $color-amber      0%,
-    $color-fire-bright 30%,
-    $color-fire        60%,
-    $color-fire-deep   100%
+    #FFB300  0%,
+    #FF7A00 30%,
+    #E85400 60%,
+    #C43000 100%
   );
 }
 ```
@@ -138,7 +129,7 @@ The primary hero background: a multi-stop linear gradient moving from deep ember
 
 A repeating horizontal-line texture evokes a CRT or broadcast monitor. Applied as a `::after` pseudo-element so it doesn't interfere with content stacking.
 
-```scss
+```css
 .bg-scanlines::after {
   content: "";
   position: absolute;
@@ -162,17 +153,17 @@ Line pitch: 3 px (1 px dark / 2 px transparent). Increase pitch to 4–5 px on m
 
 Translucent vertical or horizontal color blocks layered over the fire gradient create the multi-plane glitch depth seen in the reference image. Each band is a `position: absolute` element with reduced opacity.
 
-```scss
-// Example: violet edge bleed (right side)
+```css
+/* violet edge bleed (right side) */
 .bg-band-violet {
-  background: $color-violet;
+  background: #4422AA;
   opacity: 0.35;
   mix-blend-mode: screen;
 }
 
-// Example: magenta mid-band
+/* magenta mid-band */
 .bg-band-magenta {
-  background: $color-magenta;
+  background: #FF1478;
   opacity: 0.25;
   mix-blend-mode: screen;
 }
