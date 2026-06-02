@@ -2,23 +2,203 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://gregorymdunaway.com/.eleventy.js</loc>
+    <lastmod>2026-06-02T22:52:16.515Z</lastmod>
+  </url>
+  
+  <url>
     <loc>https://gregorymdunaway.com/404.html</loc>
-    <lastmod>2026-05-30T15:37:45.394Z</lastmod>
+    <lastmod>2026-06-02T22:52:16.515Z</lastmod>
   </url>
   
   <url>
     <loc>https://gregorymdunaway.com/styleguide/</loc>
-    <lastmod>2026-05-30T15:37:45.394Z</lastmod>
+    <lastmod>2026-06-02T22:52:16.515Z</lastmod>
   </url>
   
   <url>
-    <loc>https://gregorymdunaway.com/assets/main.css</loc>
-    <lastmod>2026-05-30T15:37:45.414Z</lastmod>
+    <loc>https://gregorymdunaway.com/assets/css/_base/@media.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/@root.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/_base.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/blocks.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/fonts.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/forms.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/overlays.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/themes.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_base/typography.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_components/_components.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_components/button.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_components/nav.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/_utilities.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/animate.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/border.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/color.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/display.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/flex.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/grid.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/margin.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/opacity.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/padding.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/position.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/shadow.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/_utilities/text.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/css/main.css</loc>
+    <lastmod>2026-06-02T22:52:16.521Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/dist/css/bootstrap.min.css</loc>
+    <lastmod>2026-06-02T22:52:16.522Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/dist/css/bootstrap.rtl.min.css</loc>
+    <lastmod>2026-06-02T22:52:16.524Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/dist/css/cover.css</loc>
+    <lastmod>2026-06-02T22:52:16.527Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/dist/css/heroes.css</loc>
+    <lastmod>2026-06-02T22:52:16.527Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/dist/js/bootstrap.bundle.min.js</loc>
+    <lastmod>2026-06-02T22:52:16.527Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/javascript/bootstrap/bootstrap.bundle.min.js</loc>
+    <lastmod>2026-06-02T22:52:16.535Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/js/_elements/theme-picker.js</loc>
+    <lastmod>2026-06-02T22:52:16.536Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/js/app.js</loc>
+    <lastmod>2026-06-02T22:52:16.536Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/js/color-modes.js</loc>
+    <lastmod>2026-06-02T22:52:16.536Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://gregorymdunaway.com/assets/js/theme-selector.js</loc>
+    <lastmod>2026-06-02T22:52:16.536Z</lastmod>
   </url>
   
   <url>
     <loc>https://gregorymdunaway.com/</loc>
-    <lastmod>2026-05-30T15:37:45.424Z</lastmod>
+    <lastmod>2026-06-02T22:52:16.545Z</lastmod>
   </url>
   
 </urlset>

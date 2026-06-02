@@ -2,9 +2,8 @@
 <html lang="en">
 
   <head>
-  <script>(function(){try{var t=localStorage.getItem('portfolio-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+  <script>(function(){try{var t=localStorage.getItem('portfolio-theme');if(t)document.documentElement.classList.add(t)}catch(e){}})()</script>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>gregorymdunaway.com</title>
@@ -16,85 +15,59 @@
   <meta property="og:url" content="https://gregorymdunaway.com/404.html">
   <meta property="og:type" content="website">
 
-  <link rel="stylesheet" href="/assets/main.css">
-
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="alternate" type="application/rss+xml" title="gregorymdunaway.com" href="https://gregorymdunaway.com/feed.xml">
 
-  <script src="/assets/javascript/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="/assets/js/theme-selector.js" defer></script>
+  <script type="module" src="/assets/js/app.js"></script>
 </head>
 
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" rel="author" href="/">gregorymdunaway.com</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-md-auto">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" rel="author" href="/">gregorymdunaway.com</a>
+    <nav aria-label="Site navigation">
+      <ul class="site-nav">
         
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scrawnylizard/portfolio">Fork me on Github</a>
+        <li>
+          <a class="site-nav__link" href="https://github.com/scrawnylizard/portfolio">GitHub</a>
         </li>
-        <li class="nav-item ms-lg-2 d-flex align-items-center">
-          <select id="theme-picker" class="theme-selector" aria-label="Select theme">
+        <li>
+          <select id="theme-picker" class="theme-picker" aria-label="Select theme">
             <option value="">Default</option>
             <option value="cyber-daytime">Cyber Daytime</option>
             <option value="marathon">Marathon</option>
           </select>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
-</nav>
+</header>
 
 
-    <div class="py-5">
-      <div class="container page-content">
-          
-<div class="container text-center">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
+    <main>
+      
+<div class="center py-xxl px-md">
+  <h1 class="font-size-xxxxl font-weight-xxl mb-sm">404</h1>
+  <p class="font-size-lg font-weight-lg mb-xs">Page not found</p>
+  <p class="text-muted mb-lg">The requested page could not be found.</p>
+  <a class="button" href="/">Go home</a>
 </div>
 
-      </div>
+    </main>
+
+    <footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <p class="site-footer__name">Gregory M Dunaway</p>
+      
     </div>
-
-    
-<div class="py-5 border-top">
-  <div class="container">
-
-    <p class="h5 mb-3">gregorymdunaway.com</p>
-
-    <div class="row">
-
-      <div class="col-sm">
-        <ul class="list-unstyled">
-          <li>
-            
-              Gregory M Dunaway
-            
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="col-sm text-end">
-        <p>A portfolio of my works and interests.</p>
-
-
-      </div>
-
+    <div>
+      <p class="site-footer__desc">A portfolio of my works and interests.</p>
     </div>
-
   </div>
-</div>
+</footer>
 
 
   </body>

@@ -2,9 +2,8 @@
 <html lang="en">
 
   <head>
-  <script>(function(){try{var t=localStorage.getItem('portfolio-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})()</script>
+  <script>(function(){try{var t=localStorage.getItem('portfolio-theme');if(t)document.documentElement.classList.add(t)}catch(e){}})()</script>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Style Guide | gregorymdunaway.com</title>
@@ -16,53 +15,46 @@
   <meta property="og:url" content="https://gregorymdunaway.com/styleguide/">
   <meta property="og:type" content="website">
 
-  <link rel="stylesheet" href="/assets/main.css">
-
+  <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="alternate" type="application/rss+xml" title="gregorymdunaway.com" href="https://gregorymdunaway.com/feed.xml">
 
-  <script src="/assets/javascript/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="/assets/js/theme-selector.js" defer></script>
+  <script type="module" src="/assets/js/app.js"></script>
 </head>
 
 
   <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <div class="container">
-    <a class="navbar-brand" rel="author" href="/">gregorymdunaway.com</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-md-auto">
+    <header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__brand" rel="author" href="/">gregorymdunaway.com</a>
+    <nav aria-label="Site navigation">
+      <ul class="site-nav">
         
-        <li class="nav-item">
-          <a class="nav-link" href="https://github.com/scrawnylizard/portfolio">Fork me on Github</a>
+        <li>
+          <a class="site-nav__link" href="https://github.com/scrawnylizard/portfolio">GitHub</a>
         </li>
-        <li class="nav-item ms-lg-2 d-flex align-items-center">
-          <select id="theme-picker" class="theme-selector" aria-label="Select theme">
+        <li>
+          <select id="theme-picker" class="theme-picker" aria-label="Select theme">
             <option value="">Default</option>
             <option value="cyber-daytime">Cyber Daytime</option>
             <option value="marathon">Marathon</option>
           </select>
         </li>
       </ul>
-    </div>
+    </nav>
   </div>
-</nav>
+</header>
 
 
-    <div class="py-5">
-      <div class="container page-content">
-          <article>
-
-  <header>
-    <h1>Style Guide</h1>
-  </header>
-
-  <section>
-    <h1>Style Guide</h1>
+    <main>
+      <div class="py-xl px-md">
+  <div class="line-length-xl mx-auto">
+    <article class="formatted">
+      <header class="mb-lg">
+        <h1>Style Guide</h1>
+      </header>
+      <section>
+        <h1>Style Guide</h1>
 <p>This is the canonical style reference for the personal website. All design decisions should be documented here before being implemented. Claude must read this file before making any styling changes.</p>
 <hr>
 <h2>Colors</h2>
@@ -81,22 +73,29 @@
 <td>Brand / Action</td>
 <td><code>$primary</code></td>
 <td><code>#4582ec</code></td>
-<td>Bootstrap primary; links, active states</td>
+<td>Links, active states, accent color</td>
 </tr>
 <tr>
 <td>Near-black</td>
 <td><code>$color-void</code></td>
 <td><code>#0A0A0A</code></td>
-<td>Letterbox bars, deep backgrounds</td>
+<td>Default light-mode text; letterbox bars, deep backgrounds</td>
 </tr>
 <tr>
 <td>Off-white</td>
 <td><code>$color-highlight</code></td>
 <td><code>#F5F0E8</code></td>
-<td>Warm white for text on dark surfaces</td>
+<td>Default light-mode page background; text on dark surfaces</td>
 </tr>
 </tbody>
 </table>
+<h4>Light / dark mode</h4>
+<p>The default theme supports both light and dark modes automatically, adapting to the visitor's system preference:</p>
+<ul>
+<li><strong>Light mode</strong> — background: <code>#F5F0E8</code> (color-highlight); text: <code>#0A0A0A</code> (color-void)</li>
+<li><strong>Dark mode</strong> — background: a deep tone derived from the primary blue; text: a desaturated near-white</li>
+</ul>
+<p>Neither Marathon nor Cyber Daytime activates dark mode independently — they override the color palette entirely (see themes below).</p>
 <h3>Marathon Palette (Cinematic / Hero Contexts)</h3>
 <p>Drawn from the Marathon reference image: high-saturation fire tones anchored by a neon lime accent and cool violet/magenta counterpoints.</p>
 <table>
@@ -155,10 +154,10 @@
 </table>
 <h4>Usage rules</h4>
 <ul>
-<li>The fire gradient (<code>$color-fire-deep</code> → <code>$color-fire</code> → <code>$color-fire-bright</code> → <code>$color-amber</code>) is for hero/full-bleed backgrounds only — not UI chrome.</li>
-<li><code>$color-lime</code> is the sole light-on-dark accent. One instance per viewport at most; overuse destroys impact.</li>
-<li><code>$color-violet</code> and <code>$color-magenta</code> are edge/bleed accents, never dominant fills.</li>
-<li>All Marathon palette colors must appear against <code>$color-void</code> or a fire-gradient background; never on white.</li>
+<li>The fire gradient (<code>#C43000</code> → <code>#E85400</code> → <code>#FF7A00</code> → <code>#FFB300</code>) is for hero/full-bleed backgrounds only — not UI chrome.</li>
+<li><code>#AAFF00</code> (lime) is the sole light-on-dark accent. One instance per viewport at most; overuse destroys impact.</li>
+<li><code>#4422AA</code> (violet) and <code>#FF1478</code> (magenta) are edge/bleed accents, never dominant fills.</li>
+<li>All Marathon palette colors must appear against <code>#0A0A0A</code> or a fire-gradient background; never on white.</li>
 </ul>
 <h3>Cyber Daytime Palette (Light / High-Energy Contexts)</h3>
 <p>High-saturation, high-brightness tones evoking digital screens in harsh daylight: electric blue sky, neon yellow sun, sharp green, warm coral, and near-pure white.</p>
@@ -212,10 +211,10 @@
 </table>
 <h4>Usage rules</h4>
 <ul>
-<li><code>$cd-porcelain</code> is the default page background in the Cyber Daytime theme — not pure white.</li>
-<li><code>$cd-yellow</code> has insufficient contrast on <code>$cd-porcelain</code> for body text; use it only as a fill/background, large display type on <code>$cd-ocean</code>, or decorative elements.</li>
-<li><code>$cd-ocean</code> and <code>$cd-coral</code> are the two action colors. Use one per UI region — don't mix them on a single button row.</li>
-<li><code>$cd-green</code> is reserved for positive/active state feedback; avoid using it purely decoratively so it retains semantic meaning.</li>
+<li><code>#FAFFFD</code> (porcelain) is the default page background in the Cyber Daytime theme — not pure white.</li>
+<li><code>#FFFF3F</code> (yellow) has insufficient contrast on porcelain for body text; use it only as a fill/background, large display type on <code>#3C91E6</code>, or decorative elements.</li>
+<li><code>#3C91E6</code> (ocean) and <code>#FA824C</code> (coral) are the two action colors. Use one per UI region — don't mix them on a single button row.</li>
+<li><code>#A2D729</code> (green) is reserved for positive/active state feedback; avoid using it purely decoratively so it retains semantic meaning.</li>
 <li>This palette is for light-mode surfaces. Do not combine it with the Marathon palette's fire tones in the same section.</li>
 </ul>
 <hr>
@@ -235,7 +234,7 @@
 </tr>
 <tr>
 <td>UI / headings</td>
-<td>System sans-serif stack (default Bootstrap)</td>
+<td>System sans-serif stack</td>
 </tr>
 <tr>
 <td>Display (Marathon)</td>
@@ -245,48 +244,33 @@
 </table>
 <h3>Marathon Display Type</h3>
 <p>Large hero text uses extreme letter-spacing and all-caps to match the cinematic titling style in the reference image.</p>
-<pre><code class="language-scss">.display-marathon {
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-weight: 700;
-  color: $color-lime;          // default: neon lime on dark
-  line-height: 1;
-}
-</code></pre>
-<p>HUD / telemetry labels (small metadata beneath hero content) use monospace, low opacity:</p>
-<pre><code class="language-scss">.label-hud {
-  font-family: &quot;Courier New&quot;, Courier, monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0.55;
-  color: $color-amber;
-}
-</code></pre>
+<p>Display marathon text: <code>uppercase</code>, <code>letter-spacing: 0.25em</code>, <code>font-weight: 700</code>, <code>color: #AAFF00</code> (lime), <code>line-height: 1</code>.</p>
+<p>HUD / telemetry labels (small metadata beneath hero content) use monospace, low opacity:
+<code>font-family: monospace</code>, <code>font-size: 0.65rem</code>, <code>letter-spacing: 0.08em</code>, <code>text-transform: uppercase</code>, <code>opacity: 0.55</code>, <code>color: #FFB300</code> (amber).</p>
 <hr>
 <h2>Spacing</h2>
 <!-- Document the spacing scale and usage rules here -->
 <hr>
 <h2>Layout</h2>
 <h3>Letterbox</h3>
-<p>Hero sections may use a letterbox treatment — <code>$color-void</code> bars (top and bottom, ~5–8 vh each) cropping the visible content area to a 2.39:1 cinematic ratio. This is achieved with padding or pseudo-elements, not by clipping the background.</p>
+<p>Hero sections may use a letterbox treatment — <code>#0A0A0A</code> bars (top and bottom, ~5–8 vh each) cropping the visible content area to a 2.39:1 cinematic ratio. This is achieved with padding or pseudo-elements, not by clipping the background.</p>
 <hr>
 <h2>Background Patterns</h2>
 <h3>Fire Gradient</h3>
 <p>The primary hero background: a multi-stop linear gradient moving from deep ember at the bottom to bright amber at the top, with orange as the dominant mid-zone.</p>
-<pre><code class="language-scss">.bg-fire {
+<pre><code class="language-css">.bg-fire {
   background: linear-gradient(
     180deg,
-    $color-amber      0%,
-    $color-fire-bright 30%,
-    $color-fire        60%,
-    $color-fire-deep   100%
+    #FFB300  0%,
+    #FF7A00 30%,
+    #E85400 60%,
+    #C43000 100%
   );
 }
 </code></pre>
 <h3>Scanline Overlay</h3>
 <p>A repeating horizontal-line texture evokes a CRT or broadcast monitor. Applied as a <code>::after</code> pseudo-element so it doesn't interfere with content stacking.</p>
-<pre><code class="language-scss">.bg-scanlines::after {
+<pre><code class="language-css">.bg-scanlines::after {
   content: &quot;&quot;;
   position: absolute;
   inset: 0;
@@ -305,16 +289,16 @@
 <p>Line pitch: 3 px (1 px dark / 2 px transparent). Increase pitch to 4–5 px on mobile for legibility.</p>
 <h3>Color Band Overlay</h3>
 <p>Translucent vertical or horizontal color blocks layered over the fire gradient create the multi-plane glitch depth seen in the reference image. Each band is a <code>position: absolute</code> element with reduced opacity.</p>
-<pre><code class="language-scss">// Example: violet edge bleed (right side)
+<pre><code class="language-css">/* violet edge bleed (right side) */
 .bg-band-violet {
-  background: $color-violet;
+  background: #4422AA;
   opacity: 0.35;
   mix-blend-mode: screen;
 }
 
-// Example: magenta mid-band
+/* magenta mid-band */
 .bg-band-magenta {
-  background: $color-magenta;
+  background: #FF1478;
   opacity: 0.25;
   mix-blend-mode: screen;
 }
@@ -329,42 +313,24 @@
 <h2>Voice &amp; Tone</h2>
 <!-- Document writing guidelines here -->
 
-  </section>
-
-</article>
-
-      </div>
-    </div>
-
-    
-<div class="py-5 border-top">
-  <div class="container">
-
-    <p class="h5 mb-3">gregorymdunaway.com</p>
-
-    <div class="row">
-
-      <div class="col-sm">
-        <ul class="list-unstyled">
-          <li>
-            
-              Gregory M Dunaway
-            
-          </li>
-          
-        </ul>
-      </div>
-
-      <div class="col-sm text-end">
-        <p>A portfolio of my works and interests.</p>
-
-
-      </div>
-
-    </div>
-
+      </section>
+    </article>
   </div>
 </div>
+
+    </main>
+
+    <footer class="site-footer">
+  <div class="site-footer__inner">
+    <div>
+      <p class="site-footer__name">Gregory M Dunaway</p>
+      
+    </div>
+    <div>
+      <p class="site-footer__desc">A portfolio of my works and interests.</p>
+    </div>
+  </div>
+</footer>
 
 
   </body>
