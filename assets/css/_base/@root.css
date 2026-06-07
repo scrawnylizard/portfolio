@@ -67,6 +67,9 @@ design tokens
     "Helvetica Neue", arial, sans-serif;
   --font-family-prose:
     var(--font-family-main);
+  /* Permanent Marker — display/accent only (section greetings, watermarks) */
+  --font-family-display:
+    "Permanent Marker", "Bradley Hand", "Comic Sans MS", cursive;
   --font-family-code:
     ui-monospace, menlo, monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",

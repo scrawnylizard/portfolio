@@ -10,6 +10,7 @@ html:has(.section--full) {
 }
 
 .section {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -32,9 +33,44 @@ html:has(.section--full) {
 }
 
 .section__inner {
+  position: relative;
+  z-index: 1;
   inline-size: 100%;
   max-inline-size: 80rem;
   margin-inline: auto;
+}
+
+/* repeated header watermark: the section's word tiled in Permanent Marker,
+   faint and tilted behind the content for a hand-drawn header effect */
+.section__echo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.04em;
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  font-family: var(--font-family-display);
+  font-size: clamp(2.75rem, 9vw, 6.5rem);
+  line-height: 1.04;
+  white-space: nowrap;
+  color: var(--color-accent);
+  opacity: 0.08;
+  transform: rotate(-6deg) scale(1.2);
+}
+
+/* visible Permanent Marker greeting that sits over the watermark */
+.section__greeting {
+  font-family: var(--font-family-display);
+  font-weight: 400;
+  font-size: var(--font-size-xxl);
+  line-height: 1;
+  color: var(--color-accent);
+  margin-block-end: var(--space-xs);
 }
 
 .section__eyebrow {
