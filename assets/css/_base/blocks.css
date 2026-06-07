@@ -57,6 +57,9 @@ body {
   line-height: var(--line-height-lg);
   color: var(--color-text);
   background-color: var(--color-bg);
+  background-image: var(--bg-texture);
+  background-size: var(--bg-texture-size);
+  background-blend-mode: multiply;
 }
 
 main {

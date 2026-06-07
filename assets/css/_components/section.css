@@ -10,6 +10,7 @@ html:has(.section--full) {
 }
 
 .section {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,23 +23,50 @@ html:has(.section--full) {
   scroll-snap-align: start;
 }
 
-/* alternating surface for visual rhythm between sections */
+/* alternating surface for visual rhythm between sections;
+   carries the same ceramic texture over the deeper tone */
 .section--alt {
-  background: var(--color-bg-dark);
+  background-color: var(--color-bg-dark);
+  background-image: var(--bg-texture);
+  background-size: var(--bg-texture-size);
+  background-blend-mode: multiply;
 }
 
 .section__inner {
+  position: relative;
+  z-index: 1;
   inline-size: 100%;
   max-inline-size: 80rem;
   margin-inline: auto;
 }
 
+/* oversized Permanent Marker greeting: a single word, slightly diagonal,
+   wide enough that its edges bleed just off the page (clipped by the
+   html { overflow-x: clip } on the root) */
+.section__greeting {
+  font-family: var(--font-family-display);
+  font-weight: 400;
+  font-size: 35vw;
+  line-height: 0.9;
+  white-space: nowrap;
+  text-align: center;
+  color: var(--color-accent);
+  transform: rotate(-5deg);
+  /* break out of the padded container so the word centers on the full
+     viewport and its edges bleed off both sides evenly */
+  inline-size: 100vw;
+  margin-inline: calc(50% - 50vw);
+  margin-block: var(--space-sm);
+}
+
+/* section headers use black text in light contexts, falling back to the
+   theme's text color where the surface is dark (default dark mode, Marathon) */
 .section__eyebrow {
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-xl);
   letter-spacing: var(--letter-spacing-lg);
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: light-dark(#000, var(--color-text));
   margin-block-end: var(--space-sm);
 }
 
@@ -48,7 +76,14 @@ html:has(.section--full) {
   line-height: var(--line-height-sm);
   letter-spacing: var(--letter-spacing-sm);
   text-wrap: balance;
+  color: light-dark(#000, var(--color-text));
   margin-block-end: var(--space-md);
+}
+
+/* hero photo scales with the viewport instead of a fixed small size */
+.hero-photo {
+  inline-size: min(90vw, 34rem);
+  block-size: auto;
 }
 
 .section__lead {

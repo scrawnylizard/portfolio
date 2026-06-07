@@ -51,6 +51,13 @@ design tokens
   /* fixed site header height (full-screen sections offset against this) */
   --header-h: 3.5rem;
 
+  /* ceramic/pottery background texture: fine clay grain + soft mottle,
+     multiplied over the page color for a matte, hand-thrown feel */
+  --bg-texture:
+    url("/assets/img/texture-grain.svg"),
+    url("/assets/img/texture-mottle.svg");
+  --bg-texture-size: 180px 180px, 600px 600px;
+
   /* typography — font stacks
      Montserrat is the standard family site-wide (loaded in <head>); the
      system sans stack is the fallback while the web font loads. */
@@ -60,6 +67,9 @@ design tokens
     "Helvetica Neue", arial, sans-serif;
   --font-family-prose:
     var(--font-family-main);
+  /* Permanent Marker — display/accent only (section greetings, watermarks) */
+  --font-family-display:
+    "Permanent Marker", "Bradley Hand", "Comic Sans MS", cursive;
   --font-family-code:
     ui-monospace, menlo, monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
