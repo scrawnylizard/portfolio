@@ -59,18 +59,24 @@ html:has(.section--full) {
   white-space: nowrap;
   text-align: center;
   color: var(--color-accent);
-  transform: translate(-50%, -50%);
+  /* The advance box is centered, but the word's ink sits ~0.05em right of
+     box center (the display face's asymmetric side bearings). Nudge left by
+     that amount — in em so it tracks the font size — to land the visible
+     ink on the shared center axis with .section__howdy. */
+  transform: translate(calc(-50% - 0.05em), -50%);
   /* purely decorative — the real greeting is .section__howdy in the flow */
   pointer-events: none;
 }
 
 /* the readable greeting that heads the hero: standard family, normal size,
-   centered on the same axis as the oversized .section__greeting behind it */
+   ink-centered on the same axis as the oversized .section__greeting behind it
+   (same ~0.05em side-bearing correction, scaled to this word's size) */
 .section__howdy {
   font-size: var(--font-size-lg);
   font-weight: var(--font-weight-lg);
   text-align: center;
   color: light-dark(#000, var(--color-text));
+  transform: translateX(-0.05em);
   margin-block-end: var(--space-sm);
 }
 
