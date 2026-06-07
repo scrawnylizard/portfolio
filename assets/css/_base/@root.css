@@ -48,6 +48,9 @@ design tokens
   --space-xxxl:  calc(var(--space-xxl) * var(--space-scale));
   --space-flex:  clamp(8rem, 20vw, 16rem);
 
+  /* fixed site header height (full-screen sections offset against this) */
+  --header-h: 3.5rem;
+
   /* typography — font stacks
      Montserrat is the standard family site-wide (loaded in <head>); the
      system sans stack is the fallback while the web font loads. */

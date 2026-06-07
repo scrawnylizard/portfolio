@@ -1,0 +1,126 @@
+/* ----------------------------------------------------------------------------
+section: full-screen landing sections
+---------------------------------------------------------------------------- */
+
+/* gentle vertical snap only when the page is built from full-screen sections,
+   offset so anchored jumps clear the fixed header */
+html:has(.section--full) {
+  scroll-snap-type: y proximity;
+  scroll-padding-block-start: var(--header-h);
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-xxl);
+  padding-inline: var(--space-md);
+}
+
+.section--full {
+  min-block-size: 100dvh;
+  scroll-snap-align: start;
+}
+
+/* alternating surface for visual rhythm between sections */
+.section--alt {
+  background: var(--color-bg-dark);
+}
+
+.section__inner {
+  inline-size: 100%;
+  max-inline-size: 80rem;
+  margin-inline: auto;
+}
+
+.section__eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-xl);
+  letter-spacing: var(--letter-spacing-lg);
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-block-end: var(--space-sm);
+}
+
+.section__title {
+  font-size: var(--font-size-xxxl);
+  font-weight: var(--font-weight-xxl);
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-sm);
+  text-wrap: balance;
+  margin-block-end: var(--space-md);
+}
+
+.section__lead {
+  font-size: var(--font-size-lg);
+  max-inline-size: var(--line-length-md);
+  opacity: 0.8;
+}
+
+/* responsive card grid for work / hobbies / interests */
+.section__grid {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  margin-block-start: var(--space-lg);
+}
+
+.tile {
+  padding: var(--space-md);
+  border: var(--border-width-sm) solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  background: oklch(from var(--color-bg) calc(l * 0.98) c h);
+}
+
+@media (--motion) {
+  .tile {
+    transition: transform 0.15s ease, border-color 0.15s ease;
+  }
+}
+
+@media (--hover) {
+  .tile:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-accent);
+  }
+}
+
+.tile__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-xl);
+  line-height: var(--line-height-sm);
+  margin-block-end: var(--space-xs);
+}
+
+.tile__body {
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
+}
+
+/* hero scroll cue */
+.section__scroll {
+  display: inline-block;
+  margin-block-start: var(--space-xl);
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
+  text-decoration: none;
+  opacity: 0.5;
+}
+
+@media (--hover) {
+  .section__scroll:hover {
+    opacity: 1;
+    color: var(--color-accent);
+  }
+}
+
+@media (--motion) {
+  .section__scroll {
+    animation: section-bob 1.8s ease-in-out infinite;
+  }
+}
+
+@keyframes section-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(0.35rem); }
+}
