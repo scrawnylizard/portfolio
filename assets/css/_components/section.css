@@ -22,9 +22,13 @@ html:has(.section--full) {
   scroll-snap-align: start;
 }
 
-/* alternating surface for visual rhythm between sections */
+/* alternating surface for visual rhythm between sections;
+   carries the same ceramic texture over the deeper tone */
 .section--alt {
-  background: var(--color-bg-dark);
+  background-color: var(--color-bg-dark);
+  background-image: var(--bg-texture);
+  background-size: var(--bg-texture-size);
+  background-blend-mode: multiply;
 }
 
 .section__inner {
