@@ -40,37 +40,23 @@ html:has(.section--full) {
   margin-inline: auto;
 }
 
-/* repeated header watermark: the section's word tiled in Permanent Marker,
-   faint and tilted behind the content for a hand-drawn header effect */
-.section__echo {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.04em;
-  overflow: hidden;
-  pointer-events: none;
-  user-select: none;
-  font-family: var(--font-family-display);
-  font-size: clamp(2.75rem, 9vw, 6.5rem);
-  line-height: 1.04;
-  white-space: nowrap;
-  color: var(--color-accent);
-  opacity: 0.08;
-  transform: rotate(-6deg) scale(1.2);
-}
-
-/* visible Permanent Marker greeting that sits over the watermark */
+/* oversized Permanent Marker greeting: a single word, slightly diagonal,
+   wide enough that its edges bleed just off the page (clipped by the
+   html { overflow-x: clip } on the root) */
 .section__greeting {
   font-family: var(--font-family-display);
   font-weight: 400;
-  font-size: var(--font-size-xxl);
-  line-height: 1;
+  font-size: 35vw;
+  line-height: 0.9;
+  white-space: nowrap;
+  text-align: center;
   color: var(--color-accent);
-  margin-block-end: var(--space-xs);
+  transform: rotate(-5deg);
+  /* break out of the padded container so the word centers on the full
+     viewport and its edges bleed off both sides evenly */
+  inline-size: 100vw;
+  margin-inline: calc(50% - 50vw);
+  margin-block: var(--space-sm);
 }
 
 .section__eyebrow {
