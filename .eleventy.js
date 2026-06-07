@@ -61,6 +61,7 @@ module.exports = function(eleventyConfig) {
 
   // Static assets
   eleventyConfig.addPassthroughCopy("assets/img");
+  eleventyConfig.addPassthroughCopy("assets/fonts");
   eleventyConfig.addPassthroughCopy("assets/docs");
   eleventyConfig.addPassthroughCopy("CNAME");
 
