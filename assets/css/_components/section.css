@@ -40,10 +40,18 @@ html:has(.section--full) {
   margin-inline: auto;
 }
 
-/* oversized Permanent Marker greeting: a single word, slightly diagonal,
-   wide enough that its edges bleed just off the page (clipped by the
-   html { overflow-x: clip } on the root) */
+/* oversized Permanent Marker greeting, now a decorative watermark layered
+   behind the hero content rather than sitting in the flow. It is pulled out
+   of flow (position: absolute) so it adds no spacing, and pushed behind the
+   photo and text (z-index: -1, below the .section__inner content). It is
+   anchored to where a normal-sized, default-font "Howdy" header would sit —
+   centered horizontally and vertically over the hero block — so it aligns
+   with the greeting/title in front of it instead of running diagonally. */
 .section__greeting {
+  position: absolute;
+  z-index: -1;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
   font-family: var(--font-family-display);
   font-weight: 400;
   font-size: 35vw;
@@ -51,12 +59,12 @@ html:has(.section--full) {
   white-space: nowrap;
   text-align: center;
   color: var(--color-accent);
-  transform: rotate(-5deg);
   /* break out of the padded container so the word centers on the full
      viewport and its edges bleed off both sides evenly */
   inline-size: 100vw;
-  margin-inline: calc(50% - 50vw);
-  margin-block: var(--space-sm);
+  transform: translate(-50%, -50%);
+  /* purely decorative — never intercept clicks/scroll from real content */
+  pointer-events: none;
 }
 
 /* section headers use black text in light contexts, falling back to the
