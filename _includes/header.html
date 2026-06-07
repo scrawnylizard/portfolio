@@ -1,24 +1,48 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a class="site-header__brand" rel="author" href="/">{{ site.title | escape }}</a>
-    <nav aria-label="Site navigation">
-      <ul class="site-nav">
-        {% for item in site.header_pages %}
-        <li>
-          <a class="site-nav__link" href="{{ item.url }}">{{ item.title | escape }}</a>
-        </li>
-        {% endfor %}
-        <li>
-          <a class="site-nav__link" href="{{ site.github_repository_url }}">GitHub</a>
-        </li>
-        <li>
-          <select id="theme-picker" class="theme-picker" aria-label="Select theme">
-            <option value="">Default</option>
-            <option value="cyber-daytime">Cyber Daytime</option>
-            <option value="marathon">Marathon</option>
-          </select>
-        </li>
-      </ul>
-    </nav>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-drawer">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
   </div>
 </header>
+
+<div class="drawer-backdrop" id="drawer-backdrop"></div>
+
+<aside class="drawer" id="site-drawer" aria-label="Site menu" aria-hidden="true">
+  <button type="button" class="drawer__close" id="drawer-close" aria-label="Close menu">&times;</button>
+
+  <p class="drawer__title">Sections</p>
+  <ul class="drawer__nav">
+    <li><a class="drawer__link" href="/#welcome">Welcome</a></li>
+    <li><a class="drawer__link" href="/#work">Work</a></li>
+    <li><a class="drawer__link" href="/#hobbies">Hobbies</a></li>
+    <li><a class="drawer__link" href="/#interests">Interests</a></li>
+  </ul>
+
+  {% if site.header_pages.length %}
+  <ul class="drawer__nav mt-sm">
+    {% for item in site.header_pages %}
+    <li><a class="drawer__link" href="{{ item.url }}">{{ item.title | escape }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <hr class="drawer__divider">
+
+  <p class="drawer__title">Elsewhere</p>
+  <ul class="drawer__nav">
+    <li><a class="drawer__link" href="{{ site.github_repository_url }}" target="_blank" rel="noopener">GitHub &#8599;</a></li>
+  </ul>
+
+  <hr class="drawer__divider">
+
+  <label class="drawer__title" for="theme-picker">Theme</label>
+  <select id="theme-picker" class="theme-picker" aria-label="Select theme">
+    <option value="">Default</option>
+    <option value="cyber-daytime">Cyber Daytime</option>
+    <option value="marathon">Marathon</option>
+  </select>
+</aside>
