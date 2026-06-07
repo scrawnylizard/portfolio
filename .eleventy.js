@@ -64,6 +64,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("assets/fonts");
   eleventyConfig.addPassthroughCopy("assets/docs");
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("favicon.ico");
 
   eleventyConfig.addCollection("posts", (api) =>
     api.getFilteredByGlob("_posts/**/*.md").sort((a, b) => b.date - a.date)
