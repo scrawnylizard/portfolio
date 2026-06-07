@@ -1,3 +1,8 @@
 /* ----------------------------------------------------------------------------
-fonts: web font declarations (system fonts used by default)
+fonts: web font declarations
+
+Montserrat is the site's standard family. It is loaded via Google Fonts in
+_includes/head.html (preconnect + stylesheet) so it can be fetched in parallel
+with this bundle; the family is wired up in @root.css (--font-family-main).
+The system sans stack remains the fallback while the web font loads.
 ---------------------------------------------------------------------------- */

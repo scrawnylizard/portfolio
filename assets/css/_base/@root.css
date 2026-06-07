@@ -23,10 +23,13 @@ design tokens
   --primary:   oklch(58% 0.19 256deg);
   --secondary: oklch(65% 0.12 200deg);
 
-  /* semantic color tokens */
-  --color-text:    light-dark(#0a0a0a, oklch(from var(--neutral) var(--100)));
-  --color-bg:      light-dark(#f5f0e8, oklch(from var(--primary) var(--800)));
-  --color-bg-dark: light-dark(oklch(from var(--neutral) var(--50)), oklch(from var(--primary) var(--900)));
+  /* semantic color tokens
+     light: warm beige page, soft warm-dark ink (easy on the eyes)
+     dark:  deep ocean-blue surfaces, warm off-white ink
+     light-dark() keeps the theme matched to the visitor's system preference */
+  --color-text:    light-dark(#2b2620, #e9e2d4);
+  --color-bg:      light-dark(#f0e6d2, #0e2a3c);
+  --color-bg-dark: light-dark(#e8ddc8, #13344a);
   --color-accent:  light-dark(oklch(from var(--primary) var(--500)), oklch(from var(--primary) var(--300)));
   --color-link:    light-dark(oklch(from var(--secondary) var(--500)), oklch(from var(--secondary) var(--200)));
   --color-border:  light-dark(oklch(from var(--neutral) var(--200)), oklch(from var(--primary) var(--600)));
@@ -45,13 +48,15 @@ design tokens
   --space-xxxl:  calc(var(--space-xxl) * var(--space-scale));
   --space-flex:  clamp(8rem, 20vw, 16rem);
 
-  /* typography — font stacks */
+  /* typography — font stacks
+     Montserrat is the standard family site-wide (loaded in <head>); the
+     system sans stack is the fallback while the web font loads. */
   --font-family-main:
-    system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Montserrat", system-ui, -apple-system, blinkmacsystemfont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
     "Helvetica Neue", arial, sans-serif;
   --font-family-prose:
-    Georgia, Cambria, "Times New Roman", serif;
+    var(--font-family-main);
   --font-family-code:
     ui-monospace, menlo, monaco, "Cascadia Mono", "Segoe UI Mono",
     "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
