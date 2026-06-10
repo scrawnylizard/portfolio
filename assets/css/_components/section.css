@@ -67,11 +67,12 @@ html:has(.section--full) {
   white-space: nowrap;
   text-align: center;
   color: var(--color-accent);
-  /* The advance box is centered, but the word's ink sits ~0.05em right of
-     box center (the display face's asymmetric side bearings). Nudge left by
-     that amount — in em so it tracks the font size — to land the visible
-     ink on the shared center axis with .section__howdy. */
-  transform: translate(calc(-50% - 0.05em), -50%);
+  /* The box is centered on the header, but the word's ink sits ~0.05em right
+     and ~0.04em below box center (the display face's asymmetric side bearings
+     and low baseline). Nudge back by those amounts — in em so they track the
+     font size — to land the visible ink centered on the header at every screen
+     size, instead of drifting down onto the name on large desktop type. */
+  transform: translate(calc(-50% - 0.05em), calc(-50% - 0.04em));
   /* purely decorative — the real greeting is .section__howdy in the flow */
   pointer-events: none;
 }
