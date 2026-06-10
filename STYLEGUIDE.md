@@ -91,6 +91,30 @@ Display marathon text: `uppercase`, `letter-spacing: 0.25em`, `font-weight: 700`
 HUD / telemetry labels (small metadata beneath hero content) use monospace, low opacity:
 `font-family: monospace`, `font-size: 0.65rem`, `letter-spacing: 0.08em`, `text-transform: uppercase`, `opacity: 0.55`, `color: #FFB300` (amber).
 
+### Permanent Marker Greeting (Hero)
+
+The homepage hero pairs an oversized **Permanent Marker** watermark with a smaller, readable greeting of the same word, centered on one shared axis. Permanent Marker (`--font-family-display`) is reserved for this accent role — never body or UI text.
+
+- **Watermark** (`.section__greeting`): the word at `font-size: 35vw`, `line-height: 0.9`, `color: var(--color-accent)`, `inline-size: max-content`. It is decorative (`aria-hidden`, `pointer-events: none`), pulled out of flow and layered behind all hero content (`position: absolute; z-index: -1`). The `max-content` box shrink-wraps the word so it scales with the viewport and bleeds off both edges evenly.
+- **Header** (`.section__howdy`): the readable greeting in the standard family (Montserrat) at `font-size: var(--font-size-xl)`, `font-weight: 700` — a bold section header sitting a step below the page title.
+
+Both are center-aligned on the same axis (see em-corrections below) and anchored to the header group (`.section__hero-head`) so the watermark tracks the header rather than the middle of the content stack.
+
+### Optical Centering — em-corrections
+
+Display and handwritten faces (e.g. Permanent Marker) carry asymmetric side bearings and a low/off-center baseline, so a glyph's **visible ink** does not sit at the center of its text box. Geometric centering (`text-align: center`, `translate(-50%, …)`) therefore looks visibly off — and because the error is a fixed fraction of the type size, it is invisible on small text but obvious at hero scale.
+
+**Rule:** when centering large display type, correct the residual ink offset with a `translate` expressed in **`em`** (never px), so the correction scales with the font and holds at every viewport size. Measure the offset (advance-box center vs. visible-ink center) once, then apply it; re-measure if the word, weight, or face changes.
+
+For the hero "Howdy" in Permanent Marker the measured offsets are ~`0.05em` right of and ~`0.04em` below box center, corrected with:
+
+```css
+/* watermark: pull the ink left and up onto the header axis */
+transform: translate(calc(-50% - 0.05em), calc(-50% - 0.04em));
+```
+
+The smaller header gets the matching horizontal nudge (`transform: translateX(-0.05em)`).
+
 ---
 
 ## Spacing
@@ -179,7 +203,29 @@ High-contrast rectangular blocks (white-on-orange or lime-on-dark) at irregular 
 
 ## Components
 
-<!-- Document per-component decisions here (Navbar, Footer, Buttons, Cards, etc.) -->
+### Hero Greeting
+
+A positioned wrapper holds the decorative watermark and the visible header, so the watermark anchors to the header rather than the content stack:
+
+```html
+<div class="section__hero-head">                            <!-- position: relative anchor -->
+  <p class="section__greeting" aria-hidden="true">Howdy</p>  <!-- oversized watermark, z-index: -1 -->
+  <p class="section__howdy">Howdy</p>                        <!-- bold readable header -->
+</div>
+<h1 class="section__title">…</h1>
+```
+
+- The watermark sits behind everything via `z-index: -1` within the `.section__inner` stacking context; the header text paints on top and stays readable.
+- `.section__hero-head { position: relative }` is the watermark's containing block, so `inset-block-start: 50% / inset-inline-start: 50%` centers the watermark on the header line at any screen height (it does not drift to the middle of a tall mobile layout).
+- The two words are aligned with em-corrections — see Typography → Optical Centering.
+
+### Favicon
+
+The site icon is a capital **"G"** set in **Permanent Marker**, solid black on a transparent ground — the hero's display face reduced to a monogram.
+
+- Sources: `/assets/img/favicon-32.png`, `favicon-180.png` (apple-touch), `favicon-512.png`, and `/favicon.ico` (site root, for the browser's default request).
+- Linked in `_includes/head.html`; the root `favicon.ico` is passthrough-copied in `.eleventy.js`.
+- Black ink has low contrast on dark browser chrome — revisit with a backing tile if a dark-tab presence is needed.
 
 ---
 
