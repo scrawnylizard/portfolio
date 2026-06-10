@@ -40,12 +40,20 @@ html:has(.section--full) {
   margin-inline: auto;
 }
 
+/* the hero header group (greeting + name greeting); positioning context so the
+   oversized watermark anchors to the header itself rather than the centre of
+   the whole content stack — otherwise on tall (phone) layouts it drifts down. */
+.section__hero-head {
+  position: relative;
+}
+
 /* oversized Permanent Marker greeting, a decorative watermark layered behind
    the hero content rather than sitting in the flow. It is pulled out of flow
    (position: absolute) so it adds no spacing, and pushed behind the photo and
-   text (z-index: -1, below the .section__inner content). The box shrink-wraps
-   the word (inline-size: max-content) and is centered on the hero's axis, so
-   as the type scales with the viewport it bleeds off both sides evenly. */
+   text (z-index: -1, below the .section__inner content). It is centred on the
+   .section__hero-head box, so it stays anchored over the "Howdy" header at any
+   screen height. The box shrink-wraps the word (inline-size: max-content) and
+   centres on the hero's axis, so as the type scales it bleeds evenly both sides. */
 .section__greeting {
   position: absolute;
   z-index: -1;
