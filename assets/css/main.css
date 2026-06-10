@@ -856,18 +856,36 @@
     position: relative;
   }
 
+  .section__hero-head {
+    position: relative;
+  }
+
   .section__greeting {
+    z-index: -1;
+    inline-size: max-content;
     font-family: var(--font-family-display);
     white-space: nowrap;
     text-align: center;
     color: var(--color-accent);
-    inline-size: 100vw;
-    margin-inline: calc(50% - 50vw);
-    margin-block: var(--space-sm);
+    pointer-events: none;
     font-size: 35vw;
     font-weight: 400;
     line-height: .9;
-    transform: rotate(-5deg);
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    transform: translate(calc(-50% - .05em), calc(-50% - .04em));
+  }
+
+  .section__howdy {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-xl);
+    line-height: var(--line-height-sm);
+    letter-spacing: var(--letter-spacing-sm);
+    text-align: center;
+    color: light-dark(#000, var(--color-text));
+    margin-block-end: var(--space-xs);
+    transform: translateX(-.05em);
   }
 
   .section__eyebrow {

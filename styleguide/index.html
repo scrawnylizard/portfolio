@@ -10,6 +10,10 @@
   <meta name="description" content="A portfolio of my works and interests.">
   <link rel="canonical" href="https://gregorymdunaway.com/styleguide/">
 
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/img/favicon-180.png">
+
   <meta property="og:title" content="Style Guide">
   <meta property="og:description" content="A portfolio of my works and interests.">
   <meta property="og:url" content="https://gregorymdunaway.com/styleguide/">
@@ -271,6 +275,21 @@
 <p>Display marathon text: <code>uppercase</code>, <code>letter-spacing: 0.25em</code>, <code>font-weight: 700</code>, <code>color: #AAFF00</code> (lime), <code>line-height: 1</code>.</p>
 <p>HUD / telemetry labels (small metadata beneath hero content) use monospace, low opacity:
 <code>font-family: monospace</code>, <code>font-size: 0.65rem</code>, <code>letter-spacing: 0.08em</code>, <code>text-transform: uppercase</code>, <code>opacity: 0.55</code>, <code>color: #FFB300</code> (amber).</p>
+<h3>Permanent Marker Greeting (Hero)</h3>
+<p>The homepage hero pairs an oversized <strong>Permanent Marker</strong> watermark with a smaller, readable greeting of the same word, centered on one shared axis. Permanent Marker (<code>--font-family-display</code>) is reserved for this accent role — never body or UI text.</p>
+<ul>
+<li><strong>Watermark</strong> (<code>.section__greeting</code>): the word at <code>font-size: 35vw</code>, <code>line-height: 0.9</code>, <code>color: var(--color-accent)</code>, <code>inline-size: max-content</code>. It is decorative (<code>aria-hidden</code>, <code>pointer-events: none</code>), pulled out of flow and layered behind all hero content (<code>position: absolute; z-index: -1</code>). The <code>max-content</code> box shrink-wraps the word so it scales with the viewport and bleeds off both edges evenly.</li>
+<li><strong>Header</strong> (<code>.section__howdy</code>): the readable greeting in the standard family (Montserrat) at <code>font-size: var(--font-size-xl)</code>, <code>font-weight: 700</code> — a bold section header sitting a step below the page title.</li>
+</ul>
+<p>Both are center-aligned on the same axis (see em-corrections below) and anchored to the header group (<code>.section__hero-head</code>) so the watermark tracks the header rather than the middle of the content stack.</p>
+<h3>Optical Centering — em-corrections</h3>
+<p>Display and handwritten faces (e.g. Permanent Marker) carry asymmetric side bearings and a low/off-center baseline, so a glyph's <strong>visible ink</strong> does not sit at the center of its text box. Geometric centering (<code>text-align: center</code>, <code>translate(-50%, …)</code>) therefore looks visibly off — and because the error is a fixed fraction of the type size, it is invisible on small text but obvious at hero scale.</p>
+<p><strong>Rule:</strong> when centering large display type, correct the residual ink offset with a <code>translate</code> expressed in <strong><code>em</code></strong> (never px), so the correction scales with the font and holds at every viewport size. Measure the offset (advance-box center vs. visible-ink center) once, then apply it; re-measure if the word, weight, or face changes.</p>
+<p>For the hero &quot;Howdy&quot; in Permanent Marker the measured offsets are ~<code>0.05em</code> right of and ~<code>0.04em</code> below box center, corrected with:</p>
+<pre><code class="language-css">/* watermark: pull the ink left and up onto the header axis */
+transform: translate(calc(-50% - 0.05em), calc(-50% - 0.04em));
+</code></pre>
+<p>The smaller header gets the matching horizontal nudge (<code>transform: translateX(-0.05em)</code>).</p>
 <hr>
 <h2>Spacing</h2>
 <!-- Document the spacing scale and usage rules here -->
@@ -332,7 +351,26 @@
 <p>High-contrast rectangular blocks (white-on-orange or lime-on-dark) at irregular intervals evoke the pixelated crown shapes in the reference image. These are decorative only and must not obscure readable content. Implement as SVG or CSS <code>box-shadow</code> lists — not images — to keep them resolution-independent.</p>
 <hr>
 <h2>Components</h2>
-<!-- Document per-component decisions here (Navbar, Footer, Buttons, Cards, etc.) -->
+<h3>Hero Greeting</h3>
+<p>A positioned wrapper holds the decorative watermark and the visible header, so the watermark anchors to the header rather than the content stack:</p>
+<pre><code class="language-html">&lt;div class=&quot;section__hero-head&quot;&gt;                            &lt;!-- position: relative anchor --&gt;
+  &lt;p class=&quot;section__greeting&quot; aria-hidden=&quot;true&quot;&gt;Howdy&lt;/p&gt;  &lt;!-- oversized watermark, z-index: -1 --&gt;
+  &lt;p class=&quot;section__howdy&quot;&gt;Howdy&lt;/p&gt;                        &lt;!-- bold readable header --&gt;
+&lt;/div&gt;
+&lt;h1 class=&quot;section__title&quot;&gt;…&lt;/h1&gt;
+</code></pre>
+<ul>
+<li>The watermark sits behind everything via <code>z-index: -1</code> within the <code>.section__inner</code> stacking context; the header text paints on top and stays readable.</li>
+<li><code>.section__hero-head { position: relative }</code> is the watermark's containing block, so <code>inset-block-start: 50% / inset-inline-start: 50%</code> centers the watermark on the header line at any screen height (it does not drift to the middle of a tall mobile layout).</li>
+<li>The two words are aligned with em-corrections — see Typography → Optical Centering.</li>
+</ul>
+<h3>Favicon</h3>
+<p>The site icon is a capital <strong>&quot;G&quot;</strong> set in <strong>Permanent Marker</strong>, solid black on a transparent ground — the hero's display face reduced to a monogram.</p>
+<ul>
+<li>Sources: <code>/assets/img/favicon-32.png</code>, <code>favicon-180.png</code> (apple-touch), <code>favicon-512.png</code>, and <code>/favicon.ico</code> (site root, for the browser's default request).</li>
+<li>Linked in <code>_includes/head.html</code>; the root <code>favicon.ico</code> is passthrough-copied in <code>.eleventy.js</code>.</li>
+<li>Black ink has low contrast on dark browser chrome — revisit with a backing tile if a dark-tab presence is needed.</li>
+</ul>
 <hr>
 <h2>Voice &amp; Tone</h2>
 <!-- Document writing guidelines here -->
