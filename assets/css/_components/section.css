@@ -68,16 +68,19 @@ html:has(.section--full) {
   pointer-events: none;
 }
 
-/* the readable greeting that heads the hero: standard family, normal size,
-   ink-centered on the same axis as the oversized .section__greeting behind it
-   (same ~0.05em side-bearing correction, scaled to this word's size) */
+/* the readable greeting that heads the hero — a bold section header in its
+   own right, sitting a step below the name (.section__title). Ink-centered on
+   the same axis as the oversized .section__greeting behind it (same ~0.05em
+   side-bearing correction, scaled to this word's size). */
 .section__howdy {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-lg);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-xl);
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-sm);
   text-align: center;
   color: light-dark(#000, var(--color-text));
   transform: translateX(-0.05em);
-  margin-block-end: var(--space-sm);
+  margin-block-end: var(--space-xs);
 }
 
 /* section headers use black text in light contexts, falling back to the
