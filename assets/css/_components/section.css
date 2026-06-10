@@ -40,10 +40,26 @@ html:has(.section--full) {
   margin-inline: auto;
 }
 
-/* oversized Permanent Marker greeting: a single word, slightly diagonal,
-   wide enough that its edges bleed just off the page (clipped by the
-   html { overflow-x: clip } on the root) */
+/* the hero header group (greeting + name greeting); positioning context so the
+   oversized watermark anchors to the header itself rather than the centre of
+   the whole content stack — otherwise on tall (phone) layouts it drifts down. */
+.section__hero-head {
+  position: relative;
+}
+
+/* oversized Permanent Marker greeting, a decorative watermark layered behind
+   the hero content rather than sitting in the flow. It is pulled out of flow
+   (position: absolute) so it adds no spacing, and pushed behind the photo and
+   text (z-index: -1, below the .section__inner content). It is centred on the
+   .section__hero-head box, so it stays anchored over the "Howdy" header at any
+   screen height. The box shrink-wraps the word (inline-size: max-content) and
+   centres on the hero's axis, so as the type scales it bleeds evenly both sides. */
 .section__greeting {
+  position: absolute;
+  z-index: -1;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  inline-size: max-content;
   font-family: var(--font-family-display);
   font-weight: 400;
   font-size: 35vw;
@@ -51,12 +67,29 @@ html:has(.section--full) {
   white-space: nowrap;
   text-align: center;
   color: var(--color-accent);
-  transform: rotate(-5deg);
-  /* break out of the padded container so the word centers on the full
-     viewport and its edges bleed off both sides evenly */
-  inline-size: 100vw;
-  margin-inline: calc(50% - 50vw);
-  margin-block: var(--space-sm);
+  /* The box is centered on the header, but the word's ink sits ~0.05em right
+     and ~0.04em below box center (the display face's asymmetric side bearings
+     and low baseline). Nudge back by those amounts — in em so they track the
+     font size — to land the visible ink centered on the header at every screen
+     size, instead of drifting down onto the name on large desktop type. */
+  transform: translate(calc(-50% - 0.05em), calc(-50% - 0.04em));
+  /* purely decorative — the real greeting is .section__howdy in the flow */
+  pointer-events: none;
+}
+
+/* the readable greeting that heads the hero — a bold section header in its
+   own right, sitting a step below the name (.section__title). Ink-centered on
+   the same axis as the oversized .section__greeting behind it (same ~0.05em
+   side-bearing correction, scaled to this word's size). */
+.section__howdy {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-xl);
+  line-height: var(--line-height-sm);
+  letter-spacing: var(--letter-spacing-sm);
+  text-align: center;
+  color: light-dark(#000, var(--color-text));
+  transform: translateX(-0.05em);
+  margin-block-end: var(--space-xs);
 }
 
 /* section headers use black text in light contexts, falling back to the
