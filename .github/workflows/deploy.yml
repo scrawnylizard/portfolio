@@ -24,7 +24,9 @@ jobs:
         run: npm ci
 
       - name: Build site
-        run: npm run build
+        run: npm run build:deploy
+        env:
+          STATICRYPT_PASSWORD: ${{ secrets.STATICRYPT_PASSWORD }}
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v4

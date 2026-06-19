@@ -4,6 +4,8 @@
   "description": "Gregory M Dunaway personal portfolio",
   "scripts": {
     "build": "npx @11ty/eleventy",
+    "build:deploy": "npm run build && npm run encrypt",
+    "encrypt": "node scripts/encrypt.js",
     "start": "npx @11ty/eleventy --serve",
     "debug": "DEBUG=Eleventy* npx @11ty/eleventy"
   },
@@ -12,5 +14,8 @@
     "@11ty/eleventy-plugin-rss": "^2.0.0",
     "esbuild": "^0.24.0",
     "lightningcss": "^1.28.0"
+  },
+  "devDependencies": {
+    "staticrypt": "^3.5.4"
   }
 }

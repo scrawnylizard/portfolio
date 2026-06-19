@@ -1,0 +1,35 @@
+---
+layout: page
+title: Family Photos
+permalink: /family-photos/
+description: A private collection of family photo albums.
+eleventyExcludeFromCollections: true
+---
+
+<p class="prose">
+  A private corner for family memories. Albums live in iCloud Shared Albums —
+  drop each one into the list below.
+</p>
+
+<!--
+  ─────────────────────────────────────────────────────────────────────────────
+  How to add an Apple Photos shared album
+  ─────────────────────────────────────────────────────────────────────────────
+  1. In Photos, open the shared album → People tab → turn on "Public Website".
+  2. Copy the public link (looks like https://www.icloud.com/sharedalbum/#B0...).
+  3. Duplicate one <li class="album"> block below and paste the link into both
+     the href and the visible label.
+
+  This whole page is encrypted with StatiCrypt at build time, so the album
+  links are only revealed to visitors who know the password.
+  ─────────────────────────────────────────────────────────────────────────────
+-->
+
+<ul class="unlisted mt-lg">
+  <li class="mb-sm border-bottom pb-sm">
+    <a class="font-weight-xl undecorated" href="https://www.icloud.com/sharedalbum/#REPLACE_ME" target="_blank" rel="noopener">
+      Example album &#8599;
+    </a>
+    <p class="mt-xs font-size-sm text-muted">Replace this with a real iCloud Shared Album link.</p>
+  </li>
+</ul>

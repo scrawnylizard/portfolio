@@ -4,6 +4,8 @@ module.exports = {
   url: "https://gregorymdunaway.com",
   description: "A portfolio of my works and interests.",
   author: "Gregory M Dunaway",
-  header_pages: [],
+  header_pages: [
+    { url: "/family-photos/", title: "Family Photos" },
+  ],
   github_repository_url: "https://github.com/scrawnylizard/portfolio",
 };
