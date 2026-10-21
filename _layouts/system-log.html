@@ -1,0 +1,25 @@
+---
+layout: default
+---
+{% set domainPage = collections.systemDomains | inDomain(domain) | first %}
+{% set systemPage = collections.systems | inDomain(domain) | selectattr("data.system", "equalto", system) | first %}
+{% set crumbs = [{ title: domainPage.data.title, url: domainPage.url }, { title: systemPage.data.title, url: systemPage.url }, { title: "Log" }] %}
+<div class="py-xl px-md">
+  <div class="line-length-xl mx-auto">
+    {% include "systems-breadcrumb.html" %}
+    <article class="formatted">
+      <header class="mb-lg">
+        <p class="systems__meta"><time datetime="{{ page.date | isoDate }}">{{ page.date | postDate }}</time> · <span class="log-list__type">{{ type }}</span></p>
+        <h1>{{ title }}</h1>
+      </header>
+      {% if hypothesis or result %}
+      <dl class="log-entry__frame">
+        {% if hypothesis %}<dt>Hypothesis</dt><dd>{{ hypothesis }}</dd>{% endif %}
+        {% if result %}<dt>Result</dt><dd>{{ result }}</dd>{% endif %}
+      </dl>
+      {% endif %}
+      {{ content | safe }}
+      <p class="mt-xl"><a href="{{ systemPage.url }}#log">← Back to {{ systemPage.data.title }}</a></p>
+    </article>
+  </div>
+</div>

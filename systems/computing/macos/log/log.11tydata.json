@@ -1,0 +1,6 @@
+{
+  "layout": "system-log",
+  "domain": "computing",
+  "system": "macos",
+  "permalink": "/systems/{{ domain }}/{{ system }}/log/{{ page.fileSlug }}/"
+}

@@ -1,0 +1,131 @@
+---
+layout: default
+---
+{% set domainPage = collections.systemDomains | inDomain(domain) | first %}
+{% set crumbs = [{ title: domainPage.data.title, url: domainPage.url }, { title: title }] %}
+{% set log = collections.systemLog | logFor(domain, system) %}
+<div class="py-xl px-md">
+  <div class="line-length-xl mx-auto">
+    {% include "systems-breadcrumb.html" %}
+    <header class="mb-lg">
+      <p class="section__eyebrow">System</p>
+      <h1 class="section__title">{{ title }}</h1>
+      {% if summary %}<p class="section__lead">{{ summary }}</p>{% endif %}
+      {% if revised %}<p class="systems__meta">Model last revised {{ revised | postDate }}</p>{% endif %}
+    </header>
+
+    <nav class="systems__toc mb-lg" aria-label="On this page">
+      <a href="#purpose">Purpose</a>
+      <a href="#boundary">Boundary</a>
+      <a href="#stocks">Stocks &amp; flows</a>
+      <a href="#loops">Feedback loops</a>
+      <a href="#leverage">Leverage points</a>
+      <a href="#log">Practice log</a>
+    </nav>
+
+    <div class="formatted">
+      <section id="purpose" class="systems__section">
+        <h2>Purpose</h2>
+        <p>{{ purpose }}</p>
+      </section>
+
+      <section id="boundary" class="systems__section">
+        <h2>Boundary</h2>
+        <div class="systems__split">
+          <div>
+            <h3>Inside the system</h3>
+            <ul>{% for item in boundary.inside %}<li>{{ item }}</li>{% endfor %}</ul>
+          </div>
+          <div>
+            <h3>Outside (environment)</h3>
+            <ul>{% for item in boundary.outside %}<li>{{ item }}</li>{% endfor %}</ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="stocks" class="systems__section">
+        <h2>Stocks &amp; flows</h2>
+        <p class="systems__hint">Stocks are what accumulate; flows are what fill and drain them.</p>
+        <div class="systems__table-wrap">
+          <table class="systems__table">
+            <thead><tr><th scope="col">Stock</th><th scope="col">Inflows</th><th scope="col">Outflows</th><th scope="col">How I measure it</th></tr></thead>
+            <tbody>
+              {% for stock in stocks %}
+              <tr>
+                <th scope="row">{{ stock.name }}</th>
+                <td>{{ stock.inflows | join(", ") }}</td>
+                <td>{{ stock.outflows | join(", ") }}</td>
+                <td>{% if stock.measure %}<code>{{ stock.measure }}</code>{% endif %}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="loops" class="systems__section">
+        <h2>Feedback loops</h2>
+        <p class="systems__hint"><strong>R</strong> loops reinforce (amplify change); <strong>B</strong> loops balance (resist change). A <strong>+</strong> link means both ends move in the same direction; <strong>−</strong> means they move in opposite directions.</p>
+        {% for loop in loops %}
+        <figure class="loop loop--{{ loop.type }}" id="loop-{{ loop.id | lower }}">
+          <figcaption class="loop__caption">
+            <span class="loop__badge">{{ loop.id }}</span>
+            <span class="loop__name">{{ loop.name }}</span>
+            <span class="loop__type">{{ loop.type | capitalize }}</span>
+          </figcaption>
+          {% if loop.story %}<p>{{ loop.story }}</p>{% endif %}
+          <div class="loop__diagram">
+            <pre class="mermaid">{{ loop | causalLoopMermaid }}</pre>
+          </div>
+          <ol class="loop__links">
+            {% for link in loop.links %}
+            <li>{{ link.from }} <span class="loop__polarity">{% if link.polarity == "-" %}−{% else %}+{% endif %}→</span> {{ link.to }}</li>
+            {% endfor %}
+          </ol>
+        </figure>
+        {% endfor %}
+      </section>
+
+      <section id="leverage" class="systems__section">
+        <h2>Leverage points</h2>
+        <p class="systems__hint">Ranked by Donella Meadows' twelve places to intervene in a system: lower numbers are deeper, harder, and more powerful.</p>
+        <ol class="leverage">
+          {% for point in leverage | byLeverage %}
+          <li class="leverage__item">
+            <span class="leverage__level" title="Meadows level {{ point.level }}">{{ point.level }}</span>
+            <div>
+              <p class="leverage__point">{{ point.point }}</p>
+              <p class="leverage__idea">{{ point.idea }}</p>
+            </div>
+          </li>
+          {% endfor %}
+        </ol>
+      </section>
+
+      {% if content | trim %}
+      <section id="notes" class="systems__section">
+        <h2>Notes</h2>
+        {{ content | safe }}
+      </section>
+      {% endif %}
+
+      <section id="log" class="systems__section">
+        <h2>Practice log</h2>
+        {% if log.length %}
+        <ul class="log-list">
+          {% for entry in log %}
+          <li class="log-list__item">
+            <time datetime="{{ entry.date | isoDate }}">{{ entry.date | postDate }}</time>
+            <span class="log-list__type">{{ entry.data.type }}</span>
+            <a href="{{ entry.url }}">{{ entry.data.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p>No entries yet.</p>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+</div>
+<script type="module" src="/assets/js/systems.js"></script>
