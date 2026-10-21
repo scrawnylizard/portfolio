@@ -70,6 +70,43 @@ module.exports = function(eleventyConfig) {
     api.getFilteredByGlob("_posts/**/*.md").sort((a, b) => b.date - a.date)
   );
 
+  // Systems: /systems/<domain>/<system>/ with a dated practice log per system
+  const byOrder = (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99);
+  eleventyConfig.addCollection("systemDomains", (api) =>
+    api.getFilteredByGlob("systems/*/index.md").sort(byOrder)
+  );
+  eleventyConfig.addCollection("systems", (api) =>
+    api.getFilteredByGlob("systems/*/*/index.md").sort(byOrder)
+  );
+  eleventyConfig.addCollection("systemLog", (api) =>
+    api.getFilteredByGlob("systems/*/*/log/*.md").sort((a, b) => b.date - a.date)
+  );
+
+  eleventyConfig.addFilter("inDomain", (items, domain) =>
+    (items || []).filter((item) => item.data.domain === domain)
+  );
+  eleventyConfig.addFilter("logFor", (items, domain, system) =>
+    (items || []).filter((item) => item.data.domain === domain && item.data.system === system)
+  );
+  eleventyConfig.addFilter("byLeverage", (points) =>
+    [...(points || [])].sort((a, b) => a.level - b.level)
+  );
+
+  // Causal-loop diagram source for Mermaid, built from a loop's links in front matter
+  eleventyConfig.addFilter("causalLoopMermaid", (loop) => {
+    const ids = new Map();
+    const node = (label) => {
+      if (!ids.has(label)) ids.set(label, `n${ids.size}`);
+      return ids.get(label);
+    };
+    const edges = (loop.links || []).map((link) => {
+      const sign = link.polarity === "-" ? "−" : "+";
+      return `  ${node(link.from)} -->|${sign}| ${node(link.to)}`;
+    });
+    const nodes = [...ids].map(([label, id]) => `  ${id}["${label.replace(/"/g, "#quot;")}"]`);
+    return ["flowchart LR", ...nodes, ...edges].join("\n");
+  });
+
   eleventyConfig.addFilter("postDate", (d) =>
     new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric" }).format(d)
   );

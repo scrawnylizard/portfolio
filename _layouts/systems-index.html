@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<div class="py-xl px-md">
+  <div class="line-length-xl mx-auto">
+    <header class="mb-lg">
+      <p class="section__eyebrow">Systems</p>
+      <h1 class="section__title">{{ title }}</h1>
+      {% if summary %}<p class="section__lead">{{ summary }}</p>{% endif %}
+    </header>
+
+    <article class="formatted">
+      {{ content | safe }}
+    </article>
+
+    <h2 class="systems__heading mt-xl">Domains</h2>
+    <div class="section__grid">
+      {% for domainPage in collections.systemDomains %}
+      {% set count = collections.systems | inDomain(domainPage.data.domain) | length %}
+      <a class="tile tile--link" href="{{ domainPage.url }}">
+        <p class="tile__title">{{ domainPage.data.title }}</p>
+        <p class="tile__body">{{ domainPage.data.summary }}</p>
+        <p class="tile__meta">{{ count }} system{% if count != 1 %}s{% endif %}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>

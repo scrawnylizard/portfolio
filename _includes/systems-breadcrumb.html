@@ -1,0 +1,8 @@
+<nav class="breadcrumb mb-md" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list">
+    <li><a href="/systems/">Systems</a></li>
+    {% for crumb in crumbs %}
+    <li>{% if crumb.url %}<a href="{{ crumb.url }}">{{ crumb.title }}</a>{% else %}<span aria-current="page">{{ crumb.title }}</span>{% endif %}</li>
+    {% endfor %}
+  </ol>
+</nav>
